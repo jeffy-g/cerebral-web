@@ -18,7 +18,7 @@ Details:
 
 ### coming soon...
 
-![about-min](https://user-images.githubusercontent.com/26692481/56350339-865b4e00-6205-11e9-8ece-02e61da1f897.png)
+![about-min](https://user-images.githubusercontent.com/26692481/59701755-3f073300-9231-11e9-9686-af2a6b7af5f7.png)
 
 - **Avatar icon changes according to online status**
 ![char-list-min](https://user-images.githubusercontent.com/26692481/56348919-68d8b500-6202-11e9-98d7-52019b6eaadc.png)
@@ -42,16 +42,16 @@ Details:
 ---
 
 - **summary**
-![summary-min](https://user-images.githubusercontent.com/26692481/56350849-a9d2c880-6206-11e9-9c00-8b52a457c4ad.png)
+![summary-min](https://user-images.githubusercontent.com/26692481/59702009-c2c11f80-9231-11e9-81fa-cc7362e1eadb.png)
 - **summary** theme: "light"
-![summary light -min](https://user-images.githubusercontent.com/26692481/56350851-a9d2c880-6206-11e9-924f-87809e8c5a24.png)
+![summary light -min](https://user-images.githubusercontent.com/26692481/59702088-ea17ec80-9231-11e9-9b90-5862dd7c891a.png)
 
 - **skills** theme: "light"
 ![skills light -min](https://user-images.githubusercontent.com/26692481/56348905-670ef180-6202-11e9-8f2d-59d61a7b72da.png)
 
 - **plans**
-![plans2-min](https://user-images.githubusercontent.com/26692481/56348900-66765b00-6202-11e9-9d00-587a7355b5c2.png)
-![plans-min](https://user-images.githubusercontent.com/26692481/56348901-670ef180-6202-11e9-9026-9caec8699bf9.png)
+![plans2-min](https://user-images.githubusercontent.com/26692481/59702397-92c64c00-9232-11e9-9c37-b222ffa92f83.png)
+![plans-min](https://user-images.githubusercontent.com/26692481/59702505-d7ea7e00-9232-11e9-928a-eb0c75a93e31.png)
 
 - **mails** - can convert styled mail body content to html5
 ![mails-min](https://user-images.githubusercontent.com/26692481/56348899-66765b00-6202-11e9-87e5-5191796a1b66.png)
