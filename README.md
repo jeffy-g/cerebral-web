@@ -18,7 +18,7 @@ Details:
 
 ### coming soon...
 
-![about-min](https://user-images.githubusercontent.com/26692481/59701755-3f073300-9231-11e9-9686-af2a6b7af5f7.png)
+![about](https://user-images.githubusercontent.com/26692481/63975632-68262880-caea-11e9-9e59-6b08b22df991.png)
 
 - **Avatar icon changes according to online status**
 ![char-list-min](https://user-images.githubusercontent.com/26692481/56348919-68d8b500-6202-11e9-98d7-52019b6eaadc.png)
@@ -63,7 +63,7 @@ Details:
 ![ystat-min](https://user-images.githubusercontent.com/26692481/56348911-67a78800-6202-11e9-9ad3-e3bcb3537752.png)
 
 - **assets** - If have an asset that you own, you can find out where the sysytem. (Coordinates can also be obtained from image icon mouse hover
-![assets-min](https://user-images.githubusercontent.com/26692481/56430721-30b89b80-6302-11e9-968a-949b359bcb7c.png)
+![assets](https://user-images.githubusercontent.com/26692481/63975799-cfdc7380-caea-11e9-8e27-12c44c47becb.png)
 
 - **api**
 ![api-min](https://user-images.githubusercontent.com/26692481/56348912-68401e80-6202-11e9-9c2a-e076d95d3f9f.png)
