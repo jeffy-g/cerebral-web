@@ -16,9 +16,9 @@ Details:
 
 * others: can switch datasource to tranquility, singularity.
 
-### coming soon...
+### Currently under development
 
-![about](https://user-images.githubusercontent.com/26692481/63975632-68262880-caea-11e9-9e59-6b08b22df991.png)
+![top-with-about](https://user-images.githubusercontent.com/26692481/66462474-20fe6080-eab6-11e9-8564-8d840f5fcdb4.png)
 
 - **Avatar icon changes according to online status**
 ![char-list-min](https://user-images.githubusercontent.com/26692481/56348919-68d8b500-6202-11e9-98d7-52019b6eaadc.png)
@@ -28,7 +28,7 @@ Details:
 ![char-list sisi 2-min](https://user-images.githubusercontent.com/26692481/56348916-68401e80-6202-11e9-9a90-4de36ef8f8a7.png)
 
 - **skill browser**
-![skill-bw-min](https://user-images.githubusercontent.com/26692481/56348903-670ef180-6202-11e9-87e4-cde770969c6f.png)
+![skill-browser](https://user-images.githubusercontent.com/26692481/66462558-5440ef80-eab6-11e9-9249-46ecbc1f527f.png)
 
 - **sp farming**
 ![sp-farming-min](https://user-images.githubusercontent.com/26692481/56348906-67a78800-6202-11e9-892a-c2602548a67f.png)
@@ -43,15 +43,13 @@ Details:
 
 - **summary**
 ![summary-min](https://user-images.githubusercontent.com/26692481/59702009-c2c11f80-9231-11e9-81fa-cc7362e1eadb.png)
-- **summary** theme: "light"
-![summary light -min](https://user-images.githubusercontent.com/26692481/59702088-ea17ec80-9231-11e9-9b90-5862dd7c891a.png)
 
-- **skills** theme: "light"
-![skills light -min](https://user-images.githubusercontent.com/26692481/56348905-670ef180-6202-11e9-8f2d-59d61a7b72da.png)
+- **skills**
+![skills](https://user-images.githubusercontent.com/26692481/66462684-92d6aa00-eab6-11e9-88be-d99c77eee831.png)
 
 - **plans**
-![plans2-min](https://user-images.githubusercontent.com/26692481/59702397-92c64c00-9232-11e9-9c37-b222ffa92f83.png)
-![plans-min](https://user-images.githubusercontent.com/26692481/59702505-d7ea7e00-9232-11e9-928a-eb0c75a93e31.png)
+![plans](https://user-images.githubusercontent.com/26692481/66463099-5d7e8c00-eab7-11e9-8609-9530356064af.png)
+![plans-2](https://user-images.githubusercontent.com/26692481/66463110-60797c80-eab7-11e9-80d3-96e8bf91bf3a.png)
 
 - **mails** - can convert styled mail body content to html5
 ![mails-min](https://user-images.githubusercontent.com/26692481/56348899-66765b00-6202-11e9-87e5-5191796a1b66.png)
@@ -63,7 +61,9 @@ Details:
 ![ystat-min](https://user-images.githubusercontent.com/26692481/56348911-67a78800-6202-11e9-9ad3-e3bcb3537752.png)
 
 - **assets** - If have an asset that you own, you can find out where the sysytem. (Coordinates can also be obtained from image icon mouse hover
-![assets](https://user-images.githubusercontent.com/26692481/63975799-cfdc7380-caea-11e9-8e27-12c44c47becb.png)
+![wreck-in-assets-view](https://user-images.githubusercontent.com/26692481/66462924-0678b700-eab7-11e9-85ce-9c2de69f9f53.png)
+- graphically display the occupancy of container type asset with item
+![assets-view](https://user-images.githubusercontent.com/26692481/66462785-c6193900-eab6-11e9-9771-6823363c9db8.png)
 
 - **api**
 ![api-min](https://user-images.githubusercontent.com/26692481/56348912-68401e80-6202-11e9-9c2a-e076d95d3f9f.png)
