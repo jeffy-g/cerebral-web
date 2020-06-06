@@ -1,0 +1,50 @@
+@charset "utf-8";
+.images-with-skeleton {
+    position: relative;
+    display: inline-block;
+    transition: unset;
+    & > .skeletonBase {
+        position: absolute;
+        top: 0; left: 0;
+        display: inline-block;
+        &.done {
+            display: "none";
+        }
+        &.skeleton {
+            transition: background-color 300ms ease 0s;
+            background-color: rgb(216, 216, 216);
+            &.loaded {
+                background-color: unset;
+            }
+        }
+        &.skeletonImg {
+            transition: opacity 300ms ease 0s;
+            background-color:white;
+            &.loaded {
+                opacity: 0;
+            }
+        }
+    }
+    & > .skeleton, & > .skeletonImg {
+        border-radius: 2px;
+    }
+}
+.is-inline-image {
+    vertical-align: middle;
+}
+.is-image-bottom {
+    vertical-align: bottom;
+}
+.eve-image-icon {
+    @extend .is-inline-image;
+    border-radius: 2px;
+    &.is-inline {
+        margin-right: 4px;
+    }
+}
+.x24 {
+    width: 24px !important; height: 24px !important;
+}
+.x32 {
+    width: 32px !important; height: 32px !important;
+}

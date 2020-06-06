@@ -1,0 +1,202 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+	"$id": "urn:eve-application-config",
+    "$ref": "#/definitions/EVEApplicationConfigSchema",
+    "$comment": "/^[a-zA-Z0-9-_.]+$/.exec(at)",
+    "definitions": {
+        "EVEOAuth2Data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "lastRefresh": {
+                    "$ref": "#/definitions/LastRefresh"
+                },
+                "accessTokenExpiryAsLong": {
+                    "type": "integer"
+                },
+                "characterId": {
+                    "type": "integer"
+                },
+                "characterOwnerHash": {
+                    "type": "string"
+                },
+                "accessToken": {
+                    "type": "string",
+                    "pattern": "^[a-zA-Z0-9-_.]+$"
+                },
+                "accessTokenExpiry": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "refreshToken": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "accessToken",
+                "accessTokenExpiry",
+                "accessTokenExpiryAsLong",
+                "characterId",
+                "characterOwnerHash",
+                "lastRefresh",
+                "refreshToken"
+            ],
+            "title": "EVEOAuth2Data"
+        },
+        "EVEApplicationConfigSchema": {
+            "type": "object",
+            "additionalProperties": {
+                "$ref": "#/definitions/EVEApplicationConfig"
+            },
+            "title": "EVEApplicationConfigSchema"
+        },
+        "EVEApplicationConfig": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "app-config": {
+                    "$ref": "#/definitions/AppConfig"
+                }
+            },
+            "required": [
+                "app-config"
+            ],
+            "title": "EVEApplicationConfig"
+        },
+        "AppConfig": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "auth-characters": {
+                    "$ref": "#/definitions/AuthCharacters"
+                },
+                "farmCharacters": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "integer"
+                    }
+                },
+                "settings": {
+                    "$ref": "#/definitions/ApplicationSetting"
+                }
+            },
+            "required": [
+                "auth-characters",
+                "farmCharacters",
+                "settings"
+            ],
+            "title": "AppConfig"
+        },
+        "AuthCharacters": {
+            "type": "object",
+            "additionalProperties": {
+                "$ref": "#/definitions/EVEOAuth2Data"
+            },
+            "title": "AuthCharacters"
+        },
+        "LastRefresh": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "date": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            },
+            "required": [
+            ],
+            "title": "LastRefresh"
+        },
+        "ApplicationSetting": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "eve-credentials": {
+                    "$ref": "#/definitions/Credentials"
+                },
+                "assets-table-config": {
+                    "$ref": "#/definitions/AssetsTableConfig"
+                }
+            },
+            "required": [
+                "eve-credentials"
+            ],
+            "title": "ApplicationSetting"
+        },
+        "AssetsTableConfig": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "sortOrder": {
+                    "$ref": "#/definitions/SortOrder"
+                },
+                "waypointQueryFragment": {
+                    "$ref": "#/definitions/WaypointQueryFragment"
+                }
+            },
+            "required": [
+                "sortOrder",
+                "waypointQueryFragment"
+            ],
+            "title": "AssetsTableConfig"
+        },
+        "SortOrder": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "sortBy": {
+                    "type": "integer"
+                },
+                "ascending": {
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "ascending",
+                "sortBy"
+            ],
+            "title": "SortOrder"
+        },
+        "WaypointQueryFragment": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "add_to_beginning": {
+                    "type": "boolean"
+                },
+                "clear_other_waypoints": {
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "add_to_beginning",
+                "clear_other_waypoints"
+            ],
+            "title": "WaypointQueryFragment"
+        },
+        "Credentials": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "client_id": {
+                    "type": "string"
+                },
+                "secret_key": {
+                    "type": "string"
+                },
+                "redirect_uri": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "client_id",
+                "secret_key",
+                "redirect_uri"
+            ],
+            "title": "Credentials"
+        }
+    }
+}

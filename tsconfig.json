@@ -1,0 +1,32 @@
+{
+  "extends": "./tsconfig-base.json",
+  "include": [
+    "./src"
+  ],
+  "exclude": [
+    "**/node_modules",
+    "**/.*/",
+    // - - -
+    "./src/bin/**/*",
+    "./resources/**/*.js"
+  ],
+  "compilerOptions": {
+
+    // DEVNOTE: need target and module option for pug render html
+    // "target": "es2018",
+
+    "jsx": "react",                       // Specify JSX code generation: 'preserve' (jsx+react syntax, 'react-native' (js+react syntax, or 'react' (pure js.
+    // DEVNOTE: 2020/3/7 - shorthand name for development build (production mode is ignored
+    //  - ⚠️ this config entry must spec at "tsconfig.json" file (like "tsconfig-base.json"
+    "reactNamespace": "R",
+
+    "baseUrl": "./src",                   // Base directory to resolve non-absolute module names.
+    // yarn run ts-node -r tsconfig-paths/register index.ts
+    "paths": { // A series of entries which re-map imports to lookup locations relative to the 'baseUrl'.
+      "@/*": ["*"],
+      "@com/*": ["components/*"],
+      "@eve/*": ["eve/*"],
+      "@util/*": ["util/*"]
+    }
+  }
+}

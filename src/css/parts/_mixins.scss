@@ -1,0 +1,144 @@
+@charset "utf-8";
+@mixin full-screen-container(
+    $position: fixed,
+    $top: 0, $left: 0,
+    $bottom: auto, $right: auto,
+    $width: 100vw, $height: 100vh,
+) {
+    position: $position;
+    top: $top;
+    left: $left;
+    bottom: $bottom;
+    right: $right;
+    width: $width;
+    height: $height;
+}
+@mixin define-pseudo-image($name, $img-dim, $top: 0px, $left: 0px, $path-fragment: "native") {
+    content: "";
+    position: absolute;
+    top: $top;
+    left: $left;
+    background-image: url(../images/#{$path-fragment}/#{$name}.png);
+    background-size: $img-dim $img-dim;
+    width: $img-dim;
+    height: $img-dim;
+}
+@mixin media-narrow-size($MEDIA-SCREEN-MAX: 1360px) {
+    @media screen and (max-width: $MEDIA-SCREEN-MAX) {
+        @content;
+    }
+}
+@mixin sequrity-status-bound($w: 24px, $align: right) {
+    width: $w;
+    display: inline-block;
+    text-align: $align;
+}
+@mixin size($w: auto, $h: auto) {
+    width: $w;
+    height: $h;
+}
+@mixin centerize($w: auto, $h: auto) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    @include size($w, $h);
+}
+@mixin flex-layout($mainAxis: center, $crossAxis: center, $type: flex) {
+    display: $type;
+    align-items: $crossAxis;
+    justify-content: $mainAxis;
+    @content;
+}
+@mixin empty {
+    &:empty {
+        padding: 0!important;
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
+    }
+}
+@mixin ellipsis($width: 100%, $overflow: hidden) {
+    text-overflow: ellipsis;
+    overflow: $overflow;
+    white-space: nowrap;
+    @if $width != 0 {
+        width: $width;
+    }
+}
+@mixin invisible-hidden-element($width: 1, $height: 1) {
+    position: absolute !important;
+    opacity: 0 !important;
+    width: #{$width}px !important;
+    height: #{$height}px !important;
+    border: 0 !important;
+    padding: 0 !important;
+    left: 0 !important;
+    top: 0 !important;
+}
+@mixin icon-dimention($pos: middle, $font-size: 16px) {
+    vertical-align: $pos;
+    font-size: #{$font-size} !important;
+}
+@mixin shadowed-circle($color) {
+    border-radius: 50%;
+    box-shadow: 0px 0px 5px 2px $color;
+}
+@mixin zebra-bg($bg: rgba(192, 192, 192, 0.16)) {
+    &:nth-child(odd) {
+        background-color: $bg;
+    }
+}
+@mixin hover-row($c: 202, $a: .34) {
+    background-color: rgba($c, $c, $c, $a);
+    transition: background-color 200ms ease;
+}
+@mixin pad($topbottom, $rightleft) {
+    padding: $topbottom $rightleft;
+}
+@mixin button-colors($color: rgba(0, 0, 0, 0.76), $bgcolor: rgba(249, 249, 249, 0.929)) {
+    @if $color == "" {
+    } @else {
+        color: $color;
+    }
+    background-color: $bgcolor;
+}
+@mixin dense-button($size: 24px, $pad: 0) {
+    width: $size;
+    height: $size;
+    padding: $pad;
+}
+@mixin transition-button($size: 24px, $font-size: inherit) {
+    @include dense-button($size);
+    font-size: $font-size;
+    transition: var(--transition-list), transform 200ms ease 0ms;
+    @content;
+}
+@mixin tooptip-md($fontSize: 0.8rem) {
+    white-space: pre;
+    font-size: $fontSize;
+    padding: 6px 10px;
+    width: auto;
+    max-width: none;
+}
+@mixin rounded-box-with-shadow($radius: 4px) {
+    box-shadow: 0px 0px 4px 0px rgba(192, 192, 192, 0.7);
+    border-radius: $radius;
+}
+@mixin inline-image-with-width($width: auto) {
+    --image-width: #{$width};
+    width: var(--image-width);
+    vertical-align: middle;
+    border: 0;
+}
+@mixin flex-item-width-adjuster($width: auto) {
+    flex: 0.5 0 $width;
+}
+@mixin external-link-icon($dimention: 16px, $postfix: "") {
+    background: url(../images/external-link-symbol#{$postfix}.png) no-repeat 0 0 transparent;
+    background-size: $dimention $dimention;
+    width: $dimention;
+    height: $dimention;
+}

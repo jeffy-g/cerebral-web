@@ -1,0 +1,54 @@
+@charset "utf-8";
+ .rst__lineHalfHorizontalRight::before, .rst__lineFullVertical::after, .rst__lineHalfVerticalTop::after, .rst__lineHalfVerticalBottom::after {
+    background-color: rgb(185, 185, 185);
+}
+.rst__lineChildren::after {
+    background-color: rgb(185, 185, 185);
+}
+$CELL_BORDER: 1px solid rgba(208, 208, 208, 0.32);
+.ReactTable {
+    font-size: 0.8rem;
+    border: $CELL_BORDER;
+    .rt-thead {
+        &.-header {
+            box-shadow: 0 2px 15px 0 rgba(177, 177, 177, 0.22);
+        }
+        .rt-resizable-header {
+            text-align: left;
+        }
+        .rt-th, .rt-td {
+            border-right: $CELL_BORDER;
+            &.-sort-desc {
+                box-shadow: inset 0 -3px 0 0 rgba(154, 154, 154, 0.6);
+            }
+            &.-sort-asc {
+                box-shadow: inset 0 3px 0 0 rgba(47, 131, 230, 0.58);
+            }
+        }
+    }
+    .rt-tr {
+        &.-odd:hover, &.-even:hover {
+            @include hover-row;
+        }
+    }
+    .rt-tbody {
+        .rt-td {
+            border-right: $CELL_BORDER;
+        }
+        .rt-tr-group {
+            border-bottom: $CELL_BORDER;
+        }
+    }
+    .-pagination {
+        box-shadow: -1px 1px 17px -3px rgba(152, 152, 152, 0.26);
+        border-top: $CELL_BORDER;
+        .-btn {
+            color: rgba(0,0,0,0.6);
+            background: rgba(148, 148, 148, 0.56);
+            &:not([disabled]):hover {
+                background: rgb(2, 2, 2);
+                color: #fff;
+            }
+        }
+    }
+}

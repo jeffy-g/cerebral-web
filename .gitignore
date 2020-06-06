@@ -1,0 +1,26 @@
+node_modules
+winston.log
+/lib/*
+
+/tsd/*
+*.ini
+/logs/*
+*.log
+/tmp/*
+/etc/SDE/*.db
+/etc/SDE/*.bz2
+/dev-extras/design/component-structure/*
+/src/index.html
+/src/css/main.css
+/src/css/main.css.map
+/etc/SDE/*.sqlite
+
+/master-src
+/development
+
+# ts document
+/tsdoc
+
+# /docs
+/dist
+/build

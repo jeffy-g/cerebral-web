@@ -1,0 +1,103 @@
+{
+  "name": "eve-cerebral-beta",
+  "productName": "Cerebral beta",
+  "version": "1.0.0-beta",
+  "description": "Character Manager for EVE Online",
+  "author": "jeffy-g",
+  "private": true,
+  "contributors": [
+    {
+      "name": "jeffy-g",
+      "url": "https://github.com/jeffy-g"
+    }
+  ],
+  "license": "AGPL-3.0-only",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jeffy-g/cerebral-web.git"
+  },
+  "keywords": [
+    "typescript",
+    "javascript",
+    "IndexedDB",
+    "EVE",
+    "eve online"
+  ],
+  "scripts": {
+    "clear-sources": "node development/clear-sources -progress -collectRegex",
+    "clean": "npx rimraf ./docs",
+    "site:dev": "npm run webpack && npm run workbox:lib && npm run server",
+    "site:prod": "npm run webpack:prod && npm run workbox:lib && npm run server",
+    "eve-tool": "node ./resources/eve-tool",
+    "eve:check-db": "yarn eve-tool -cmd check-db",
+    "eve:esistat": "node ./etc/print-eve-esi-status -x",
+    "eve:img-list": "yarn eve-tool -cmd up-imglist",
+    "eve:skill-db": "yarn eve-tool -cmd eve-skills",
+    "eve:type-map": "yarn eve-tool -cmd typeid-map",
+    "eve:type-volume": "yarn eve-tool -cmd type-volume",
+    "fix:package": "bash ./etc/scripts/fix-package.sh",
+    "ic": "npx rimraf yarn.lock node_modules && yarn install",
+    "lint": "tslint src/**/*.{ts,tsx} -p tsconfig.json --project",
+    "node:sass": "sass --source-map ./src/css/main.css.map ./src/css/main.scss ./src/css/main.css",
+    "sass": "npx gulp sass",
+    "server": "browser-sync start -s --port 8111 --no-open --ss ./docs",
+    "ts:check": "npx tsc --noemit",
+    "tsdoc": "typedoc --mode modules --exclude \"./+(node_modules|dev-extras|etc|docs|resources|tests|tmp)\" --includes src --out tsdoc .",
+    "tsd": "tsc -p ./etc/tsd.json",
+    "u:i": "bash -c \"branch=`git branch --contains=HEAD`; git ls-files>${branch##* }.list\"",
+    "up": "yarn upgrade-interactive --latest",
+    "webpack": "npm run clean && tsc -p ./src/bin/tsconfig.json && npx gulp webpack:build --nostrip",
+    "webpack:prod": "npm run webpack -- --mode production --mangle && node ./etc/tools -cmd rws",
+    "webpack:watch": "npx gulp webpack:watch",
+    "workbox:lib": "workbox generateSW etc/workbox-config.js"
+  },
+  "//npm scripts details": {
+    "ic": "clean install",
+    "up": "update dependencies"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.10.1",
+    "hoist-non-react-statics": "^3.3.2",
+    "mini-semaphore": "^1.1.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-router": "^5.2.0",
+    "react-sortable-hoc": "^1.11.0",
+    "react-sortable-tree": "^2.7.1",
+    "react-table": "=6.11.5",
+    "recharts": "2.0.0-beta.5",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "@types/d3-scale": "^2.1.1",
+    "@types/hoist-non-react-statics": "^3.3.1",
+    "@types/jquery": "^3.3.38",
+    "@types/react": "^16.9.35",
+    "@types/react-dom": "^16.9.8",
+    "@types/react-router": "^5.1.7",
+    "@types/react-sortable-tree": "^0.3.11",
+    "@types/react-table": "6.8.5",
+    "@types/recharts": "^1.8.10",
+    "@types/terser-webpack-plugin": "^3.0.0",
+    "@types/webpack": "^4.41.17",
+    "@types/workbox-sw": "^4.3.1",
+    "cpx": "^1.5.0",
+    "del": "^5.1.0",
+    "gulp": "^4.0.2",
+    "gulp-replace": "^1.0.0",
+    "pug": "^3.0.0",
+    "replace": "^1.2.0",
+    "rimraf": "^3.0.2",
+    "rm-cstyle-cmts": "^3.2.6",
+    "sass": "^1.26.8",
+    "terser-webpack-plugin": "^3.0.3",
+    "ts-loader": "7.0.5",
+    "tslint": "^6.1.2",
+    "typescript": "^3.9.5",
+    "webpack": "^4.43.0",
+    "workbox-cli": "4.3.1"
+  }
+}

@@ -1,0 +1,88 @@
+@charset "utf-8";
+.auth-token {
+    font-size: 12px;
+}
+.refresh-table-head {
+    border: solid 1px transparent;
+    background-color: rgba(195, 195, 195, 0.43);
+    filter: blur(0.3px);
+    &.interval {
+        width: 9.5rem;
+    }
+}
+.refresh-table-cell {
+    padding: 1px 0px 1px 6px;
+    &[data-opid] {
+        @include ellipsis();
+        display: block;
+    }
+}
+.scopes-note {
+    white-space: pre;
+    border: 1px solid silver;
+    border-radius: 3px;
+    padding: 5px;
+    margin-bottom: 14px;
+    & > :nth-child(1) {
+        font-size: 1.067rem;
+    }
+}
+.eve-banner {
+    transition: filter 300ms ease;
+    @at-root div.app[data-theme="light"] {
+        .eve-banner {
+            filter: invert(1) blur(0.2px);
+        }
+    }
+}
+%highlight-hover {
+    &:hover {
+        background-color: rgba(167, 167, 167, 0.3);
+        border-radius: 4px;
+    }
+}
+.scope-token {
+    padding: 0 3px;
+    @extend %highlight-hover;
+}
+.scope-token-tooltip {
+    @include tooptip-md();
+}
+.esi-operation-list-row {
+    @extend %highlight-hover;
+    & > td {
+        opacity: 0.35;
+        --transition-list: opacity 999ms ease 0s;
+    }
+    &[data-fireable] > td {
+        opacity: 1;
+    }
+}
+.tri-state-circle {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    vertical-align: middle;
+    margin-right: 5px;
+    border-radius: 50%;
+    filter: blur(1.2px);
+    &.green {
+        background-color: rgba(80, 209, 80, 0.88);
+    }
+    &.yellow {
+        background-color: yellow;
+    }
+    &.red {
+        background-color: red;
+    }
+    &.dead {
+        filter: blur(0.6px);
+        &::before {
+            content: "❌";
+            position: relative;
+            top: -5px; left: -2px;
+            width: 10px; height: 10px;
+            font-size: 10px;
+        }
+    }
+}

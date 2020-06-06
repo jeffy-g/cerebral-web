@@ -1,0 +1,64 @@
+@charset "utf-8";
+.table-iconCell {
+    text-align: center;
+    &__icon {
+        @include icon-dimention();
+    }
+}
+.-mail-fetch-buttonCell {
+    @extend .x32;
+    padding: 4px !important;
+}
+.-right-arrow-button {
+    color: inherit;
+    @extend .x24;
+    padding: 0;
+}
+.loading-icon {
+    animation: rolling-icon 1000ms cubic-bezier(0.76, -0.93, 0.32, 1.76) infinite
+}
+.eve-mailbody-wrap-toggle {
+    font-size: 0.8em;
+    margin: 4px 0 0 4px;
+    padding: 0 4px;
+    display: inline-block;
+    cursor: pointer;
+    color: #0780bb;
+    border-radius: 4px;
+    background-color: #e8e8e8;
+}
+.eve-mail-body {
+    margin: 4px;
+    padding: 6px;
+    background-color: rgb(33, 33, 33);
+    color: white;
+    line-height: 1.2;
+    a[href] {
+        font-weight: bold;
+        text-decoration: none;
+        display: inline-block;
+        position: relative;
+        margin-right: 16px;
+        cursor: not-allowed;
+        color: rgb(224, 146, 0);
+    }
+    a {
+        &[href^="http"] {
+            cursor: pointer;
+            &::after {
+                content: "";
+                @include external-link-icon(10px, "-orange");
+                position: absolute;
+                top: 2px;
+                left: calc(100% + 1px);
+            }
+        }
+        &[href^="joinChannel"] {
+            color: rgb(116, 116, 243);
+        }
+        &[href^="bookmarkFolder"],
+        &[href^="overviewPreset"] {
+            color: rgb(1, 160, 149);
+        }
+    }
+}

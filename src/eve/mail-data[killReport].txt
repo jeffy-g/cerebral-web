@@ -1,0 +1,51 @@
+
+<font size="12" color="#bfffffff"></font>
+<font size="12" color="#ffd98d00">
+<a href="fitting:17722:18971;1:41218;1:31011;1:1447;1:31053;1:19021;1:4403;1:31065;1:12346;5:18799;1:18682;1:14270;2:18975;1:31864;10:12801;2800:28668;200::">Vigilant - ab@guristas expensive 200mm#2</a>
+<br>
+<br>
+</font>
+<font size="12" color="#bfffffff">[180215@sisi]<br>ab@guristas expensive 200mm のrig構成改定<br>
+<br>EM rigよりも Exp rigのほうが汎用性があり、<br>Exp pump I を使用<br>
+<br>ただ、anomic base guristas をこなすにあたって、<br>mobile depot のfit serviceを使って、<br>armar hardenerの付け替えを行う必要<br> -&gt; 手順を踏むのが煩わしいが、dragonfly, mantis それぞれに対して<br>      抜群のdefenceを発揮<br>
+<br>vs dragonfly:<br>  armor thermal hardener<br>
+<br>vs mantis:<br>  EM Membrane (armor EM hardener<br>   - Exp hardener - off<br>
+<br>[180228@tq]<br>Fit, Vigilant - ab@guristas expensive 200mm#2 は危険なので<br>
+</font>
+<font size="12" color="#ffd98d00">
+<a href="fitting:17722:41218;1:18971;1:1447;1:31053;1:19021;1:4403;1:30999;1:31065;1:12346;5:18799;1:18682;1:14270;2:18975;1:31864;10:12801;2800:28668;200::">Vigilant - ab@guristas expensive 200mm</a>
+</font>
+<font size="12" color="#bfffffff"> で運用中<br> -&gt; こちらのほうが anomic base Angel のFitとの共有に向いている<br>
+<br>
+</font>
+<font size="12" color="#ff00ff00">- - - - - - - - [How to]<br>
+</font>
+<font size="12" color="#bfffffff">keep range at 7000m<br>
+<br>
+</font>
+<font size="12" color="#ff007fff">dragonfly</font>
+<font size="12" color="#bfffffff">:<br> overload なしで webiをかけアプローチ<br> で接近しながらタレット+droneでの攻撃<br>
+<br>
+</font>
+<font size="12" color="#ffffff00">mantis</font>
+<font size="12" color="#bfffffff">;<br> Federation webi をoverloadし<br> タレット+droneで攻撃しながら<br> AFでアプローチ<br> 14km以内で overloadを切り、<br> 10km以内に入ったらもう一つのwebi<br> をかけ、AFをOFFに<br>
+<br>Antipharmakon Iokira<br>Antipharmakon Kosybo<br>
+<br>などのboosterがあればなお良い<br>
+<br>
+</font>
+<font size="12" color="#ffff0000">
+<b>CAVEAT: </font>
+<font size="12" color="#ffffff00">191017</b>
+</font>
+<font size="12" color="#bfffffff"> </font>
+<font size="12" color="#ffd98d00">
+<a href="killReport:79413084:6e8890a0218ecae037e428049a4db18c308f951f">Kill: Jeff Gallet (Vigilant)</a>
+<br>
+</font>
+<font size="12" color="#ffff0000">vs mantis 時は、停止状態だと受けるdamageが大きいので注意<br>
+</font>
+<font size="12" color="#ff00ff00">- - - - - - - - [How to]<br>
+<br>
+</font>
+<font size="12" color="#bfffffff">[consumed AMMO]<br>180228: Javelin M 1365<br>180313: Javelin M 1280<br>
+<br>.</font>

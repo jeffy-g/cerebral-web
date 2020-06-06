@@ -1,0 +1,42 @@
+@charset "utf-8";
+.progbar-component {
+    --progbar-component-top: auto;
+    --progbar-component-right: auto;
+    --progbar-component-bottom: auto;
+    --progbar-component-left: auto;
+    --progbar-component-width: auto;
+    position: absolute;
+    box-sizing: border-box;
+    top:    var(--progbar-component-top);
+    right:  var(--progbar-component-right);
+    bottom: var(--progbar-component-bottom);
+    left:   var(--progbar-component-left);
+    width:  var(--progbar-component-width);
+    border: solid 1px rgba(192, 192, 192, 0.35);
+    border-radius: 2px;
+    user-select: none;
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    background-color: inherit;
+    color: inherit;
+    font-size: 10px;
+    line-height: 14px;
+    z-index: 9999;
+    &__title {
+        display: inline-block;
+        box-sizing: inherit;
+        margin: 0 4px 0 4px;
+        flex: 0 0 var(--progbar_title_basis, auto);
+    }
+    &__progress {
+        flex: 1 0 auto;
+        height: 8px;
+    }
+    &__text {
+        display: inline-block;
+        flex: 0 0 34px;
+        margin: 0 0 0 2px;
+        text-align: center;
+    }
+}

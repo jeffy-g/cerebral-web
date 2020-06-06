@@ -1,0 +1,15 @@
+@charset "utf-8";
+div.sortorder-button-container {
+    padding: 2px 0;
+    transition: var(--transition-list), opacity 333ms ease;
+    position: relative;
+    top: 0px;
+    user-select: none;
+    &.has-border {
+        background-color: rgba(206, 206, 206, 0.19);
+        border-radius: 16px;
+    }
+    &[data-hidden="true"] {
+        opacity: 0;
+    }
+}

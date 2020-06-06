@@ -1,0 +1,8 @@
+{
+    // "editor.dragAndDrop": true
+    "typescript.preferences.quoteStyle": "double",
+    "files.exclude": {
+        "**/tmp/**": true
+    },
+    "typescript.tsdk": "node_modules\\typescript\\lib",
+}

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>EVE Cerebral on Web (1.0.0-beta, target: es2019, commonjs)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=0.5, user-scalable=no, shrink-to-fit=no">
+    <!-- sizes="16x16"-->
+    <link rel="icon" type="image/png" href="./eve-icon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/react-table@latest/react-table.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/react-sortable-tree@latest/style.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"/>
+    <script src="./jquery-custom.min.js"></script>
+    <script src="./webpack.js"></script>
+    <script src="./typeid-map.js"></script>
+    <script id="page-config" type="application/json">
+{
+  "application-name": "Cerebral Web",
+  "force-inspect": true,
+  "sde-version": "sde-20200602-TRANQUILITY",
+  "/eve/esi-task": {
+    "esiTaskDebug": false,
+    "esiTaskParallelity": true,
+    "esiTaskPerformanceReport": false
+  },
+  "/eve/oauth-client": {
+    "phpEVEAuthRoot": "https://eve-cerebral-web.herokuapp.com/auth"
+  },
+  "/app/bg-slide-setting": {
+    "images": [
+      "ab-gate.jpg",
+      "ab-vigilant.jpg",
+      "ag-dramiel-0.jpg",
+      "ag-dramiel-3.jpg",
+      "ag-kronos-0.jpg",
+      "ag-kronos-1.jpg",
+      "ag-kronos-2.jpg",
+      "ag-kronos-3.jpg",
+      "ag-kronos-4.jpg",
+      "ag-kronos-5.jpg",
+      "astero-0.jpg",
+      "astero-1.jpg",
+      "astero-2.jpg",
+      "astero-3.jpg",
+      "astero-4.jpg",
+      "astero-5.jpg",
+      "astero-6.jpg",
+      "astero-7.jpg",
+      "eagle.jpg",
+      "enyo-1.jpg",
+      "enyo-2.jpg",
+      "enyo-3.jpg",
+      "enyo-4.jpg",
+      "enyo-5.jpg",
+      "enyo-6.jpg",
+      "enyo-7.jpg",
+      "enyo-8.jpg",
+      "enyo-9.jpg",
+      "enyo-vs-talos.jpg",
+      "garmur-0.jpg",
+      "gate-0.jpg",
+      "jove-0.jpg",
+      "keepst0.jpg",
+      "keepst2.jpg",
+      "kronos.jpg",
+      "loki-0.jpg",
+      "loki-1.jpg",
+      "loki-3.jpg",
+      "loki-4.jpg",
+      "machariel.jpg",
+      "pac-0.jpg",
+      "pacfier-11.jpg",
+      "pacifier-0.jpg",
+      "pacifier-1.jpg",
+      "pacifier-2.jpg",
+      "pacifier-3.jpg",
+      "pacifier-4.jpg",
+      "pacifier-5.jpg",
+      "pacifier-6.jpg",
+      "pacifier-7.jpg",
+      "pacifier-8.jpg",
+      "proteus.jpg",
+      "rattle-0.jpg",
+      "station-0.jpg",
+      "station-1.jpg",
+      "stratios-0.jpg",
+      "stratios-1.jpg",
+      "structure-0.jpg",
+      "structure-1.jpg",
+      "structure-2.jpg",
+      "ti-0.jpg",
+      "ti-1.jpg",
+      "ti-2.jpg",
+      "ti-3.jpg",
+      "ti-loki-1.jpg",
+      "ti-loki-2.jpg",
+      "ti-loki-3.jpg",
+      "ti-loki-4.jpg",
+      "ti-loki-5.jpg",
+      "ti-proteus-1.jpg",
+      "ti-vargur-1.jpg",
+      "vargar.jpg",
+      "vigilant-0.jpg",
+      "vigilant-1.jpg",
+      "vigilant.jpg",
+      "vindicator0.jpg",
+      "vindicator1.jpg",
+      "vindicator2.jpg",
+      "vindicator5.jpg"
+    ],
+    "interval": 36000
+  },
+  "/components/wallet-table": {
+    "popupOptions": {
+      "id": "thumbnail-view",
+      "className": "thumbnail-view",
+      "contextSelector": "div.rt-tbody",
+      "targetSelector": "div.rt-td[data-thumbnail]"
+    },
+    "pageSizeOptions": [
+      5,
+      10,
+      15,
+      20,
+      25,
+      30,
+      40,
+      50,
+      100
+    ]
+  },
+  "/components/assets-table": {
+    "tagHeight": 18
+  }
+}
+    </script>
+    <!-- jss-insertion-point -->
+  </head>
+  <body>
+    <link rel="stylesheet" href="./css/main.css" type="text/css"/>
+    <div class="datasource-indicator" data-datasource="tq"></div>
+    <div class="app" id="App"></div>
+    <div class="splash-pane" id="splash_pane">
+      <div class="splash-pane__content fade-in-with-swing" id="splash_content">
+        <div class="splash-pane__content__title">:EVE Cerebral Web:</div>
+        <div class="splash-pane__content__message"></div>
+      </div>
+    </div>
+  </body>
+</html>
