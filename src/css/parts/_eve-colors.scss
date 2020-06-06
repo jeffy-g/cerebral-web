@@ -1,0 +1,43 @@
+@charset "utf-8";
+$NULL_COLOR: #F00000;
+@mixin create-eve-security-colors() {
+    $colors: #2FEFEF,
+        #48F0C0,
+        #00EF47,
+        #00F000,
+        #8FEF2F,
+        #EFEF00,
+        #D77700,
+        #F06000,
+        #F04800,
+        #D73000,
+        $NULL_COLOR
+    ;
+    $alpha: 1.0;
+    $step-val: 10;
+    @for $index from 0 through 10 {
+        $ss: if($step-val == 10, "1_0", #{"0_"}#{$step-val});
+        $ss-fval: if($step-val == 10, "1.0", #{"0."}#{$step-val});
+        $ss-color: rgba(nth($colors, $index + 1), $alpha);
+        span[data-sstext="#{$ss-fval}"] {
+            color: $ss-color;
+        }
+        span[data-ssbg="#{$ss-fval}"] {
+            background-color: $ss-color;
+        }
+        $step-val: $step-val - 1;
+    }
+}
+span[data-sstext]::before {
+    content: attr(data-sstext);
+}
+.ss-text-null {
+    color: $NULL_COLOR;
+}
+.ss-bg-null {
+    background-color: $NULL_COLOR;
+}
+div[data-sstext^="-"], span[data-sstext^="-"] {
+    @extend .ss-text-null;
+}
+@include create-eve-security-colors();

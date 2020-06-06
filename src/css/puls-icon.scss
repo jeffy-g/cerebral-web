@@ -1,0 +1,82 @@
+.pulse-icon-box {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 2rem;
+  background-color: rgba(192, 192, 192, 0.16);
+}
+.pulse-icon {
+  --pulse-icon-size: 1.2rem;
+  --shake-it-10: calc(2px * -1);
+  --shake-it-20: calc(2px * 0.66);
+  --shake-it-30: calc(2px * -0.33);
+  --shake-it-40: calc(2px * 0.165);
+  --shake-it-50: calc(2px * -0.0666);
+  position: relative;
+  display: inline-block;
+  margin: 2px 4px;
+  padding: 0;
+  z-index: 1;
+  text-align: center;
+  font-family: 'Material Icons';
+  font-size: var(--pulse-icon-size);
+  width: var(--pulse-icon-size);
+  height: var(--pulse-icon-size);
+  &.is-processing {
+    animation: narrow-swing 1s ease infinite normal;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: var(--pulse-icon-size);
+    height: var(--pulse-icon-size);
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px rgba(113, 113, 113, 0.141);
+    opacity: 0;
+    @at-root .pulse-icon {
+      opacity: 0;
+      transition: opacity 333ms;
+      &.is-active, &.is-processing {
+        opacity: 1;
+        &::before {
+          animation: pulse 0.85s infinite ease-in-out;
+        }
+      }
+    }
+  }
+}
+@keyframes pulse {
+  0% {
+    opacity: 1;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 0;
+    transform: scale(1.3);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+}
+@keyframes narrow-swing {
+  10% {
+    transform: rotate(15deg);
+  }
+  20% {
+    transform: rotate(-13deg);
+  }
+  30% {
+    transform: rotate(7deg);
+  }
+  40% {
+    transform: rotate(-5deg);
+  }
+  70% {
+    transform: rotate(2deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}

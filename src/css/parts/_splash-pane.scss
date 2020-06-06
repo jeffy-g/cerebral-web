@@ -1,0 +1,44 @@
+@charset "utf-8";
+$FADIN_N_SWING_TIMEOUT: 1800ms;
+$ROLLING_ICON_CYCLE: 1800ms;
+$SHINING_TEXT_CYCLE: 1800ms;
+$SWING_CYCLE: 2700ms;
+$SPLASH_FINISH_TIMEOUT: 900ms;
+$FADE_OUT_UP_TIMEOUT: 2000ms;
+$BG_TRANSITION_TIME: 1200ms;
+$CONTENT_FONT_SIZE: 30px;
+.splash-pane {
+    display: block;
+    z-index: 10000;
+    background-color: rgb(8, 8, 16);
+    color: white;
+    @include full-screen-container();
+    &__content {
+        font-size: $CONTENT_FONT_SIZE;
+        text-align: center;
+        @include full-screen-container(
+            absolute,
+            $top: calc(100vh / 2 - #{$CONTENT_FONT_SIZE / 2}),
+            $height: $CONTENT_FONT_SIZE * 2
+        );
+    }
+    &__content__title {
+        filter: blur(0.63px);
+        font-weight: 700;
+    }
+    &__content__message {
+        font-size: 0.85rem;
+    }
+}
+.fade-in-with-swing {
+    animation: fadein $FADIN_N_SWING_TIMEOUT linear, swing $SWING_CYCLE ease 1900ms infinite normal;
+    opacity: 1;
+}
+.fade-out {
+    opacity: 0;
+    animation: fadeOut $SPLASH_FINISH_TIMEOUT linear;
+}
+.fade-out-up {
+    opacity: 0;
+    animation: fadeOutUp $FADE_OUT_UP_TIMEOUT ease;
+}

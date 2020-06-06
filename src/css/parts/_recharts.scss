@@ -1,0 +1,59 @@
+@charset "utf-8";
+ .eve-status-widget {
+    $widget-margin: 20px;
+    position: fixed;
+    top: auto;
+    left: calc(100vw - 330px - #{$widget-margin});
+    right: auto;
+    bottom: $widget-margin;
+    border: none;
+    border-radius: 4px;
+    padding: 4px 8px;
+    --transition-list: opacity 555ms ease 0s;
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
+    &.is-showing {
+        opacity: 0.92;
+        z-index: $Z_BelowMuiDialog;
+        pointer-events: auto;
+    }
+}
+.recharts-wrapper.-line-chart {
+	box-sizing: content-box;
+    padding: 5px 10px 5px 0;
+    user-select: none;
+    margin-left: -6px;
+}
+.recharts-tooltip-wrapper {
+    color: rgb(101, 101, 101);
+}
+.recharts-default-tooltip {
+    background: transparent;
+    border-radius: 4px;
+}
+.recharts-ystats-container {
+    --x-margin: #{$PAGEs-MARGIN};
+    --x-margin-x2: var(--x-margin) * 2;
+    margin: var(--x-margin) var(--x-margin) 20px;
+    position: relative;
+    width: calc(100vw - var(--x-margin-x2));
+    height: calc(100vh - 44px - 28px);
+    box-sizing: border-box;
+    padding: 9px;
+    padding-bottom: 18px;
+    border-radius: 4px;
+    .recharts-tooltip-label {
+        margin: 0 0 4px !important;
+        font-size: 11px;
+        &::after {
+            content: ":";
+        }
+    }
+}
+.app-right-container.push .recharts-ystats-container {
+    width: calc(100vw - #{$PUSH_LEFT} - var(--x-margin-x2));
+    @include media-narrow-size() {
+        width: calc(100vw - #{$PUSH_LEFT_SMALL} - var(--x-margin-x2));
+    }
+}

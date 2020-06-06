@@ -1,0 +1,35 @@
+@charset "utf-8";
+.rst__collapseButton, .rst__expandButton {
+    filter: blur(0.55px);
+}
+%margin10-0-0-10 {
+    margin: 10px 0 0 10px;
+}
+%vtop-pad0 {
+    vertical-align: top;
+    padding: 0;
+}
+.skill-browser {
+    &__leftContent {
+        @extend %vtop-pad0;
+        height: 100%;
+        &__topElement {
+            @extend %margin10-0-0-10;
+        }
+        &__bottomElement {
+            @extend %margin10-0-0-10;
+            width: 280px;
+        }
+    }
+    &__rightContent {
+        @extend %vtop-pad0;
+        width: 100%;
+        height: 100%;
+    }
+}
+.filterable-skill-list {
+    margin: 5px;
+    width: 270px;
+    overflow: auto;
+    height: calc(100vh - 208px);
+}

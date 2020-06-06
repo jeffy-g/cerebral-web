@@ -1,0 +1,35 @@
+@charset "utf-8";
+@mixin position-with-dimension($w, $h, $position: absolute) {
+    position: $position;
+    width: $w;
+    height: $h;
+}
+@mixin morphing-icon-base($size, $dataset-name, $t: 0, $r: 0) {
+    @include position-with-dimension($size, $size);
+    top: $t;
+    right: $r;
+    content: attr(unquote($dataset-name));
+}
+.morphing-icon {
+    $ICON_SIZE: 22px;
+    @include position-with-dimension($ICON_SIZE, $ICON_SIZE, relative);
+    &::before {
+        @include morphing-icon-base($ICON_SIZE, "data-before");
+        transition: opacity 500ms ease, transform 500ms ease;
+        transform: rotateZ(90deg);
+        opacity: 1;
+    }
+    &::after {
+        @include morphing-icon-base($ICON_SIZE, "data-after");
+        font-size: 1.466rem;
+        transition: opacity 800ms ease;
+        opacity: 0;
+    }
+    &[data-pined="1"]::before {
+        transform: rotateZ(0deg);
+        opacity: 0;
+    }
+    &[data-pined="1"]::after {
+        opacity: 1;
+    }
+}

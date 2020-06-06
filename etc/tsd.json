@@ -1,0 +1,11 @@
+// tsc -p tsd.json
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "allowJs": false,
+    "isolatedModules": false,
+    "declaration": true,
+    "declarationDir": "../project-types",
+    "emitDeclarationOnly": true
+  }
+}

@@ -1,0 +1,110 @@
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//-    <one line to give the program's name and a brief idea of what it does.>
+//-    Copyright (C) 2018  jeffy-g hirotom1107@gmail.com
+//-
+//-    This program is free software: you can redistribute it and/or modify
+//-    it under the terms of the GNU Affero General Public License as
+//-    published by the Free Software Foundation, either version 3 of the
+//-    License, or (at your option) any later version.
+//-
+//-    This program is distributed in the hope that it will be useful,
+//-    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//-    GNU Affero General Public License for more details.
+//-
+//-    You should have received a copy of the GNU Affero General Public License
+//-    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+- const JSDELIVR_PREFIX = "https://cdn.jsdelivr.net/npm";
+
+- const JS_MAIN = "./init.js";
+- const TS_MAIN = "./init.ts";
+- const JS_PUBLISH_MAIN = "./webpack.js";
+
+- const JQUERY_URL = "./jquery-custom.min.js";
+
+//-
+//- main script name.
+//-
+- let js_main_entry;
+- let webpack = !!locals.vars.webpack;
+- let jquery = JQUERY_URL;
+
+- if (locals.vars.publish) {
+  - js_main_entry = JS_PUBLISH_MAIN;
+- } else {
+  - js_main_entry = TS_MAIN;
+- }
+
+- if (locals.vars.electron) {
+  - jquery = "./jquery.js";
+- }
+
+//- 
+//- 
+//- 
+mixin style-sheet(href)
+  link(rel="stylesheet", href=href)&attributes(attributes)
+
+//- 
+//- 
+//- 
+mixin js-script(src)
+  script(src=src)&attributes(attributes)
+
+//-
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    title EVE Cerebral on Web #{locals.vars.post_title}
+    meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=0.5, user-scalable=no, shrink-to-fit=no")
+    //- meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")
+    // sizes="16x16"
+    link(rel="icon", type="image/png", href="./eve-icon.png")
+
+    - if (locals.vars.publish) {
+      //- +googleAnaliticsTags()
+      +style-sheet("./css/react-table.css")
+      +style-sheet("./css/style.css")
+    - } else {
+      +style-sheet(`${JSDELIVR_PREFIX}/react-table@latest/react-table.css`)
+      +style-sheet(`${JSDELIVR_PREFIX}/react-sortable-tree@latest/style.css`)
+    - }
+
+    +style-sheet("https://fonts.googleapis.com/icon?family=Material+Icons")
+    +style-sheet("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700")
+
+    +js-script(jquery)
+    - if (locals.vars.publish) {
+      +js-script("./bin/unzip.min.js")
+      +js-script("./bin/compressed-script-loader.js")
+    - } else {
+      +js-script(js_main_entry) //- init.{ts,js}
+      - if (webpack) { //- means local server?
+          +js-script("./typeid-map.js")
+      - }
+      //- +js-script("./vendor.webpack.js")
+      //- +js-script("./index.webpack.js")
+    - }
+
+    //- DEVNOTE: whitespace at the end of the line is required, take care.
+    // page-config-json 
+    // jss-insertion-point 
+
+  body
+    //- DEVNOTE: since the material-ui API embeds style in "head", need to place it override in this position.
+    +style-sheet("./css/main.css")(type="text/css")
+
+    //- things like marker 
+    .datasource-indicator(data-datasource="tq")
+
+    //- #App
+    //- DEVNOTE: extends body background-image and background-color(hidden)
+    //-  -> chart-widget enable - extends body background-image and ...
+    #App.app
+    #splash_pane.splash-pane
+      #splash_content.splash-pane__content.fade-in-with-swing
+        .splash-pane__content__title :EVE Cerebral Web:
+        .splash-pane__content__message

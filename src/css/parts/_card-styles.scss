@@ -1,0 +1,15 @@
+@charset "utf-8";
+$CARD_PANE_BORDER_RADIUS: 4px;
+.flex-item-card {
+    --flex-grow: 0.5;
+    flex: var(--flex-grow) 0 0;
+    margin: 10px 0 0 10px;
+    &:last-child {
+        margin-right: 10px;
+    }
+}
+.mui-custom-card {
+    margin-top: 0px !important;
+    margin-bottom: 10px !important;
+    border-radius: $CARD_PANE_BORDER_RADIUS !important;
+}

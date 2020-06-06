@@ -1,0 +1,161 @@
+@charset "utf-8";
+.summary-para {
+    margin: 0;
+    line-height: 26px;
+}
+.summary-listitem-root {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.skillqueue {
+    &-detail {
+        flex: 1 0 auto;
+        & > :first-child {
+            z-index: 1;
+        }
+    }
+    &-detail__point {
+        font-size: 0.7rem;
+        color: silver;
+    }
+    &-timespan {
+        color: rgb(158, 158, 158);
+        flex: 0 0 110px;
+        text-align: right;
+    }
+}
+@mixin emit-firstqueue-style($selector, $queueLineHeight, $adjustWidth) {
+    $BACK_IMG_WIDTH: 120 * ($queueLineHeight / 30);
+    .#{unquote($selector)} {
+        position: relative;
+        &::after {
+            content: "";
+            background-size: $BACK_IMG_WIDTH $queueLineHeight;
+            background-image: url(../images/native/flowing.png);
+            background-position: 0 0;
+            background-repeat: repeat-x;
+            width: calc(100% - #{$adjustWidth});
+            height: $queueLineHeight;
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: flowing-right 5.5s infinite linear;
+        }
+        @at-root .app[data-theme="light"] &::after {
+            filter: invert(0.15);
+        }
+    }
+    @keyframes flowing-right {
+        0% {
+            opacity: 0;
+            background-position: 0 0;
+        }
+        50% {
+            opacity: 0.7;
+        }
+        100% {
+            opacity: 0;
+            background-position: $BACK_IMG_WIDTH 0;
+        }
+    }
+}
+@include emit-firstqueue-style("is-first-queue", 19px, 120px);
+.main-summary__race-images {
+    padding-left: 10px;
+    margin-bottom: 0px;
+}
+$summary-border-style: var(--border-silver-025a);
+@mixin bottom-bordered-element {
+    border-bottom: $summary-border-style;
+    &:last-child {
+        border-bottom: none;
+    }
+}
+.main-summary__detail-line {
+    @extend .flex-cc;
+    align-items: stretch;
+    @include bottom-bordered-element;
+    &__item {
+        padding: 2px 5px;
+        display: inline-block;
+        &.-detail-title {
+            text-align: right;
+            min-width: 110px;
+            box-sizing: border-box;
+            border-right: $summary-border-style;
+        }
+        &.-detail-content {
+            flex: 1 0 0px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+    }
+}
+div.implants-list {
+    &.has-margin {
+        margin: 4px 0 4px 20px;
+	}
+    > div {
+        @extend .flex-lc;
+        height: 24px;
+        & > :first-child {
+            display: inline-block;
+            padding-right: 4px;
+        }
+        & :nth-child(2) {
+            display: inline-block;
+            line-height: 24px;
+            flex: 1 0 auto;
+            font-size: 0.92307em;
+        }
+        & + div {
+            margin-top: 2px;
+        }
+    }
+}
+.jumpclone-details {
+    background-color: rgba(191, 191, 191, 0.19);
+    margin: 0 !important;
+    &__title {
+        margin: 4px 0;
+        background-color: rgba(0, 0, 0, 0.24);
+        padding: 2px 4px;
+        font-size: 0.867rem;
+        line-height: 22px;
+        padding-left: 28px;
+        &::before {
+            @include define-pseudo-image("jumpclones", 24px, 0px, 2px);
+        }
+    }
+    @at-root .app[data-theme="light"] .jumpclone-details {
+        background-color: rgba(245, 245, 245, 0.16);
+        &__title {
+            background-color: rgba(195, 195, 195, 0.27);
+        }
+    }
+}
+.expantion-panel-summary-root-narrow {
+    padding: 0;
+    display: block;
+    min-height: unset !important;
+    &__content {
+        display: block;
+        margin: 0 !important;
+    }
+}
+.loyalty-point-sortpane {
+    padding-left: 20px;
+}
+table.loyalty-table {
+    width: 300px;
+    td > img {
+		margin-right: 8px;
+    }
+    tr {
+        @include bottom-bordered-element;
+        & > :first-child {
+            border-right: $summary-border-style;
+        }
+    }
+}

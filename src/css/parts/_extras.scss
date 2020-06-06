@@ -1,0 +1,175 @@
+@charset "utf-8";
+.eve-banner-button {
+    margin: 10px 10px 0 10px;
+    background: url(../images/eve-sso-login-black-small.png) no-repeat 0 -1px;
+    background-size: 195px 30px;
+    width: 195px;
+    height: 30px;
+    filter: invert(0);
+    transition: filter 1000ms ease;
+    @at-root div.app[data-theme="light"] & {
+       filter: invert(1);
+    }
+}
+.eve-banner-button__checkbox {
+    margin-top: 10px;
+    margin-left: -8px;
+    height: 24px;
+    position: relative;
+    top: 3px;
+}
+.about-content-header {
+    $border-color: rgba(192, 192, 192, 0.44);
+    $text-adjust-y: 15px;
+    $h-border-witdh: $text-adjust-y * 0.8;
+    text-align: center;
+    margin: 0;
+    border: solid #{$text-adjust-y} transparent;
+    border-left-width: $h-border-witdh;
+    border-right-width: $h-border-witdh;
+    border-left-color: $border-color;
+    box-sizing: border-box;
+    height: 0;
+    &::before {
+        content: ": " attr(data-text) " :";
+        position: relative;
+        top: -#{$text-adjust-y};
+    }
+}
+@function avatar-effect($mode: "") {
+    @if $mode == "normal" {
+        @return brightness(85%) grayscale(1) blur(0.5px);
+    } @else {
+        @return brightness(125%) grayscale(0) blur(0.25px);
+    }
+}
+.eve-avatar {
+    $ms: 900ms;
+    z-index: 1;
+    cursor: pointer;
+    border-radius: 2px;
+    --transition-list: box-shadow #{$ms} ease 0s, border-radius #{$ms} ease #{$ms - 333};
+    & > img {
+        width: 40px;
+        filter: avatar-effect("normal");
+    }
+    &::after {
+        content: "";
+        position: absolute;
+        top: -3px;
+        left: 20px;
+        $dim: 24px;
+        background-size: $dim $dim;
+        width: $dim;
+        height: $dim;
+    }
+    &[data-race="1"]::after {
+        background-image: url(../images/races/caldari-min.png);
+    }
+    &[data-race="2"]::after {
+        background-image: url(../images/races/minmatar-min.png);
+    }
+    &[data-race="4"]::after {
+        background-image: url(../images/races/amarr-min.png);
+    }
+    &[data-race="8"]::after {
+        background-image: url(../images/races/gallente-min.png);
+    }
+    &.online {
+        $blur-size: 7px;
+        box-shadow: 0px 0px $blur-size 3px rgba(13, 169, 191, 0.7);
+        border-radius: 50%;
+        & > img {
+            filter: avatar-effect();
+        }
+    }
+}
+.dense-radio {
+    padding: 0;
+    filter: blur(0.6px);
+}
+.dense-radio-label {
+    margin: 0px 10px 0px 4px;
+    vertical-align: middle;
+    display: inline-block;
+}
+.styled-hr-text {
+    --align: center;
+    --text-background: white;
+    --hmargin: 6px;
+    --gradient-color: rgba(177, 177, 177, 0.76);
+    --gradient-end-color: rgba(20, 111, 177, 0.1);
+    position: relative;
+    margin: 0.40625rem var(--hmargin);
+    height: 1rem;
+    line-height: .5rem;
+    outline: none;
+    border: none;
+    text-align: var(--align);
+    opacity: 0.6;
+    &::before {
+        content: "";
+        background:
+            linear-gradient(
+                to right,
+                var(--gradient-end-color),
+                var(--gradient-color),
+                var(--gradient-end-color),
+            );
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: 100%;
+        height: 2px;
+    }
+    &::after {
+        content: attr(data-content);
+        position: relative;
+        display: inline-block;
+        color: inherit;
+        padding: 0 0.4rem;
+        line-height: 1rem;
+        background-color: var(--text-background);
+        vertical-align: -webkit-baseline-middle;
+        border-radius: 3px;
+    }
+}
+.bin-signal-icon {
+    --color: rgb(105, 240, 174);
+    color: var(--color);
+    font-size: 14px;
+    vertical-align: middle;
+}
+.ascending-descending-button {
+    --l-margin: 10px;
+    --r-margin: 0;
+    @include transition-button(28px) {
+        margin-left: var(--l-margin);
+        margin-right: var(--r-margin);
+        &[data-ascending="false"] {
+            transform: rotateZ(180deg);
+        }
+        .icon {
+            @include icon-dimention(text-bottom, 23px);
+        }
+    };
+}
+.expansion-panel-summary {
+    padding: 0 !important;
+    border-radius: $CARD_PANE_BORDER_RADIUS !important;
+    background: rgba(199, 199, 199, 0.06);
+    min-height: unset !important;
+    &[aria-expanded=true] {
+        background: rgba(199, 199, 199, 0.31);
+    }
+}
+.expansion-panel-summary-content {
+    margin: 0 !important;
+}
+.expansion-panel-details {
+    display: block;
+    &:not([data-autoheight]), &[data-autoheight="false"] {
+        max-height: 300px;
+        overflow: auto;
+    }
+}

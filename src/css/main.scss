@@ -1,0 +1,292 @@
+@charset "utf-8";
+/*!
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  <one line to give the program's name and a brief idea of what it does.>
+  Copyright (C) 2018 jeffy-g hirotom1107@gmail.com
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Affero General Public License as
+  published by the Free Software Foundation, either version 3 of the
+  License, or (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Affero General Public License for more details.
+
+  You should have received a copy of the GNU Affero General Public License
+  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+*/
+@import "./parts/mixins";
+@import "./parts/splash-pane";
+$SCROLLBAR_WIDTH: 6px;
+$PUSH_LEFT: 250px;
+$PUSH_LEFT_SMALL: 220px;
+$BODY-fontSize: 13px;
+$BODY-lineHeight: 1.53;
+$PUSH-TRANSITION: 225ms;
+$PAGEs-MARGIN: 10px;
+::-webkit-scrollbar {
+    width: $SCROLLBAR_WIDTH;
+    height: $SCROLLBAR_WIDTH;
+}
+::-webkit-scrollbar-track {
+    border-radius: $SCROLLBAR_WIDTH;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+    background-color: inherit;
+}
+::-webkit-scrollbar-thumb {
+    background-color: rgba(100, 201, 255, 0.5);
+    border-radius: $SCROLLBAR_WIDTH;
+    box-shadow: 0 0 0 1px rgba(234, 234, 234, 0.11);
+}
+$Z-BACKEND: -1;
+$Z-100: 100;
+$Z-200: 200;
+$Z-300: 300;
+$Z-400: 400;
+$Z-500: 500;
+$Z_BelowMuiDialog: 1299;
+$Z_BelowDrawer: 1199;
+:root {
+    --icon-light-filter: invert(0.3) blur(0.3px);
+    --icon-dark-filter: blur(0.3px);
+    --image-icon-filter: var(--icon-dark-filter);
+    --border-silver-025a: solid 1px rgba(192, 192, 192, 0.25);
+}
+.icon-location--inline {
+    filter: var(--image-icon-filter);
+    margin: 0 4px 0 6px;
+    font-size: 1.334rem !important;
+    padding: 2px;
+    vertical-align: middle;
+}
+.app[data-theme="light"] {
+	--image-icon-filter: var(--icon-light-filter);
+}
+html {
+    font-size: 15px;
+    font-family: "Roboto", sans-serif;
+    scrollbar-width: thin;
+    scrollbar-color: #00b7ff99 #3b3b3b;
+}
+body {
+    font-size: $BODY-fontSize;
+    line-height: $BODY-lineHeight;
+    padding: 0;
+    margin: 0;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    @supports (overflow: overlay) {
+        & {
+            overflow-y: overlay;
+        }
+    }
+    & * {
+        scrollbar-width: thin;
+        scrollbar-color: #00b7ff99 #3b3b3b;
+    }
+}
+table {
+    border-collapse: collapse;
+}
+strong, b {
+    font-weight: 500;
+}
+.image-skeleton {
+    position: absolute;
+    display: inline-block;
+    background-color: rgb(216, 216, 216);
+    &.loaded {
+        background-color: unset;
+    }
+    &.done {
+        display: none;
+    }
+}
+hr.simple-divider {
+    box-sizing: border-box;
+    border: solid 1px rgba(206, 206, 206, 0.39);
+    border-radius: 1px;
+    margin: 6px 3px;
+}
+.invisible-hidden {
+    @include invisible-hidden-element();
+}
+.ellipsis-text {
+    @include ellipsis();
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.47em;
+}
+.ellipsis {
+    @include ellipsis();
+}
+.list-item-secondary-text {
+    @extend .fs075;
+    @include media-narrow-size() {
+        font-size: 0.6rem;
+    }
+}
+.material-icons {
+    font-size: 1.4rem;
+    &.inline-small {
+        vertical-align: middle;
+        display: inline-flex;
+        font-size: 1.3rem;
+    }
+}
+.inline-image-with-width {
+    @include inline-image-with-width();
+}
+.flex-ct {
+    @include flex-layout($crossAxis: flex-start);
+}
+.flex-lc {
+    @include flex-layout(flex-start);
+}
+.flex-sbc {
+    @include flex-layout(space-between);
+}
+.flex-cc {
+    @include flex-layout();
+}
+.flex-rc {
+    @include flex-layout(flex-end);
+}
+.flex-item-auto-width {
+    @include flex-item-width-adjuster();
+}
+.flex-item-half-width {
+    @include flex-item-width-adjuster(0);
+}
+.flex-padding-item {
+    flex: 1 1 0;
+}
+.-flex-most-left {
+    margin-right: auto;
+}
+.-flex-most-right {
+    margin-left: auto;
+}
+.is-disabled-text {
+    text-decoration: line-through;
+}
+.flex-left-right-layout {
+    @extend .flex-cc;
+    & > :first-child {
+        @extend .flex-item-auto-width;
+    }
+    & > :last-child {
+        @extend .flex-item-auto-width;
+        @extend .flex-rc;
+    }
+}
+.nowrap-tooltip {
+    --tooltip-fontSize: 0.8rem;
+    @include tooptip-md(var(--tooltip-fontSize));
+    font-weight: normal;
+}
+.-inline-block {
+    display: inline-block;
+}
+.fs1 {
+    font-size: 1rem;
+}
+.fs09 {
+    font-size: 0.9rem;
+}
+.fs0866 {
+    font-size: 0.86666666rem;
+}
+.fs08125 {
+    font-size: 0.8125rem;
+}
+.fs075 {
+    font-size: 0.75rem;
+}
+.padding-0 {
+    padding: 0;
+}
+.padding-2px {
+    padding: 2px;
+}
+.padding-3px {
+    padding: 3px;
+}
+.padding-4px {
+    padding: 4px;
+}
+.padding-6px {
+    padding: 6px;
+}
+.padding-10px {
+    padding: 10px;
+}
+.medium-padding {
+    padding: 10px 14px;
+}
+.margin0 {
+    margin: 0;
+}
+.margin10 {
+    margin: 10px;
+    & + * {
+        margin-top: 0;
+    }
+}
+.margin20 {
+    margin: 20px;
+    & + * {
+        margin-top: 0;
+    }
+}
+code {
+    font-family: Consolas;
+    background-color: rgba(206, 206, 206, 0.26);
+    color: rgb(38, 189, 249);
+    border-radius: 3px;
+    padding: 1px 3px;
+}
+a.external-link {
+    text-decoration: none;
+    color: rgb(224, 146, 0);
+    pointer-events: auto;
+}
+.-border-bottom-dashed {
+    border-bottom: dashed 1px gray;
+}
+.-inherited-colors {
+    color: inherit;
+    background-color: inherit;
+}
+@include media-narrow-size() {
+    .narrow-width-text-std {
+        font-size: 0.8125rem;
+    }
+}
+@import "./parts/app";
+@import "./parts/card-styles";
+@import "./parts/char-related";
+@import "./parts/skill-browser";
+@import "./parts/settings";
+@import "./parts/summary";
+@import "./parts/skills";
+@import "./parts/_plans-related";
+@import "./parts/mail";
+@import "./parts/wallets";
+@import "./parts/assets";
+@import "./parts/api";
+@import "./parts/recharts";
+@import "./parts/progress";
+@import "./parts/react-others-override";
+@import "./parts/extras";
+@import "./parts/eve-colors";
+@import "./eve-images";
+@import "./sort-order-pane";
+@import "./morphing-icon";
+@import "./progbar";
+@import "./parts/keyframes";
