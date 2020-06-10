@@ -15,7 +15,7 @@ Character Manager for [EVE Online](https://www.eveonline.com/). (Rewrote https:/
 
  * ~~others: can switch datasource to tranquility, singularity.~~
 
-   + ⚠️ Currently the singularity server is virtually unusable as it can only be contacted when the mass test is enforced
+   + ⚠️ Currently, singularity test server ESI is disabled, see [here](https://developers.eveonline.com/blog/article/removing-datasource-singularity) for details.
 
 > ## limited version (beta 2020/6/7
 
