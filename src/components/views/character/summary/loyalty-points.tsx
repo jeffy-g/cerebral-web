@@ -36,7 +36,7 @@ type LoyaltyPointsComponentState = {
     orders: TLoyaltyOrderState;
     loyalty_points: EVELoyaltyPoints[];
 };
-type TLoyaltyComponentStrage = {
+type TLoyaltyComponentStorage = {
     expanded: boolean;
     orders: TLoyaltyOrderState;
 };
@@ -47,7 +47,7 @@ const ls = new LocalStorage(
             sortBy: "name",
             ascending: true
         }
-    } as TLoyaltyComponentStrage
+    } as TLoyaltyComponentStorage
 );
 const renderRow = (loyalty: EVELoyaltyPoints) => {
     try {

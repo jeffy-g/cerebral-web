@@ -1,5 +1,6 @@
 
-const fetch = require("node-fetch");
+
+const fetch = require("node-fetch").default;
 /* const colors =  */require("colors");
 /**
  * @typedef {Object} ESIHealthStatus - creates a new type named 'ESIHealthStatus'
@@ -69,7 +70,9 @@ function showESIHealthStatus() {
 
     fetch("https://esi.evetech.net/status.json?version=latest").then(res => {
         return res.json();
-    }).then(handler);
+    }).then(handler).catch(reason => {
+        console.log(reason.message);
+    });
 }
 
 if (process.argv[2] === "-x") {

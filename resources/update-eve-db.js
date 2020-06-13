@@ -113,7 +113,7 @@ async function updateSDEDatabase() {
     /** @type {Etag} */
     let prevEtag;
     try {
-        // @ts-ignore cannot apply resolveJsonModule option
+        // @ts- ignore cannot apply resolveJsonModule option
         prevEtag = require("../etc/SDE/etag.json");
     } catch (e) {
         console.log(e.message);

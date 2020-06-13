@@ -18,7 +18,8 @@
                     "type": "integer"
                 },
                 "characterOwnerHash": {
-                    "type": "string"
+                    "type": "string",
+                    "pattern": "^[a-zA-Z0-9+=\/]+$"
                 },
                 "accessToken": {
                     "type": "string",
@@ -29,7 +30,8 @@
                     "format": "date-time"
                 },
                 "refreshToken": {
-                    "type": "string"
+                    "type": "string",
+                    "pattern": "^[a-zA-Z0-9+=\/]+$"
                 }
             },
             "required": [
@@ -182,13 +184,16 @@
             "additionalProperties": false,
             "properties": {
                 "client_id": {
-                    "type": "string"
+                    "type": "string",
+                    "pattern": "^[a-z0-9]{32}$"
                 },
                 "secret_key": {
-                    "type": "string"
+                    "type": "string",
+                    "pattern": "^[a-zA-Z0-9]{40}$|"
                 },
                 "redirect_uri": {
-                    "type": "string"
+                    "type": "string",
+                    "pattern": ".+|"
                 }
             },
             "required": [

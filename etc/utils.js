@@ -49,7 +49,7 @@ const ArgsConfig = {
  * > command example:
  * 
  * ```shell
- * node <script path> -minify -t es6 -values "value0,value1,value2" -array "['value0', 100, true, /\r?\n/g]" -regex "/\d+/g"
+ * node <script path> -minify -t es6 -values "value0,value1,value2" -array "['value0', 100, true, /\\r?\\n/g]" -regex "/\\d+/g"
  * ```
  *
  * + then resut is
