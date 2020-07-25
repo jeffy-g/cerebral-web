@@ -54,7 +54,7 @@ const getESIBoolValue = <Property extends keyof ConfigTypes.ESITaskConfig>(stora
 };
 let cacheUA: string;
 export const BaseConfig = {
-    version: "v1.0.1-beta",
+    version: "v1.0.2-beta",
     author_email: "prometheussatyen@gmail.com",
     contributor_email: "hirotom1107@gmail.com",
     get: <K extends keyof ConfigTypes.PageConfig, T extends ConfigTypes.PageConfig[K]>(key: K, fallback?: T): T => {

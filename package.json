@@ -1,7 +1,7 @@
 {
   "name": "eve-cerebral-beta",
   "productName": "Cerebral web beta",
-  "version": "1.0.1-beta",
+  "version": "1.0.2-beta",
   "description": "Character Manager for EVE Online",
   "author": "jeffy-g",
   "private": true,
