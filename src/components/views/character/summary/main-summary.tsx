@@ -83,7 +83,7 @@ const getHomeLocationDetails = (home: EVEHomeLocation) => {
         let name = whichLocation.name;
         return whichLocation.type? `${name} (${whichLocation.type.name}`: name;
     }
-    return "Unknown Structure";
+    return "Error: Missing location data";
 };
 const getAttributesDetail = (attrs: EVECharacterAttributes) => {
     const attributeLines = [] as ReactInstanceType<"div">[];

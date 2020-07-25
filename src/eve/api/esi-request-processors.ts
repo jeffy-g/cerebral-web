@@ -133,6 +133,7 @@ export const get_characters_character_id_clones = async (char: IEVECharacter, cl
         promises = promises.concat(
             marshallImplantData(jumpCloneData.implants, jumpClone2.implants)
         );
+        // @ts-ignore Temporary response to "TS2790: The operand of a 'delete' operator must be optional." (200722
         delete jumpCloneData.implants;
         Object.assign(jumpClone2, jumpCloneData);
         jumpClones.push(jumpClone2 as EVEJumpCloneEx);
@@ -172,7 +173,7 @@ export const get_characters_character_id_location = async (char: IEVECharacter, 
 export const get_characters_character_id_loyalty_points = async (char: IEVECharacter, loyalties: EVELoyaltyPoints[], esi?: IESIClient) => {
     char.loyalty_points = loyalties;
     if (loyalties.length && esi) {
-        await mf.asyncProcess<EVELoyaltyPoints, void>(loyalties, async loyalty => {
+        await mf.asyncProcess(loyalties, async loyalty => {
             return esi.get<EVECorporation>(`corporations/${loyalty.corporation_id}`, "latest")
                 .then(value => { loyalty.corporation = value; });
         }, (values) => {

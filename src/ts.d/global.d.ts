@@ -20,10 +20,6 @@
 ///<reference types="react"/>
 ///<reference types="jquery"/>
 ///<reference path="./basic-types.d.ts"/>
-///<reference path="./js-extensions.d.ts"/>
-///<reference path="./eve.d.ts"/>
-///<reference path="./char-stats.d.ts"/>
-///<reference path="./utilities.d.ts"/>
 interface DedicatedWorkerGlobalScope {
   onmessage: ((this: DedicatedWorkerGlobalScope, ev: MessageEvent) => any) | null;
   postMessage(message: any): void;
@@ -103,7 +99,6 @@ type EVEMailDataEx = EVEMailData & {
 type EVECharacterData = EVECharacterInfo & {
     character_id: EVEId;
     name: string;
-    stats: CharStats[];
     alliance?: EVEAlliance;
     online: EVECharacterOnline;
     attributes: EVECharacterAttributes;

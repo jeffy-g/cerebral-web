@@ -75,7 +75,7 @@ export abstract class ESIUniverseBase<TType extends unknown>
                     tag = "⏳" + prefix + " wait #" + this.crtc++;
                 } else {
                     this.fetching = true;
-                    tag = "⚠️" + prefix + " fetch";
+                    tag = "🔥" + prefix + " fetch";
                 }
             }
             dbg && console.time(tag);

@@ -63,6 +63,12 @@ const resetSkillSelection = () => {
     totalPoints = 0;
     skillNames.length = 0;
 };
+const clearSkillSelectionClasses = () => {
+    const trs = $queryAll(".skill-group-details tr.selected");
+    for (let i = 0, end = trs.length; i < end;) {
+        trs[i++].classList.remove("selected");
+    }
+};
 const handleRowSelected = (e: React.MouseEvent) => {
     const _this = e.currentTarget as HTMLElement;
     const classList = _this.classList;
@@ -90,7 +96,8 @@ const SkillGroupDetails = (group: SkillGroup) => {
                 {skill.half_trained? LEVEL_024_H[trained_level]: LEVEL_025[trained_level]}
                 <td className="skill-name">{skill.skill_name}</td>
                 <td className="skill-points">
-                    {mf.toLocaleString(skill.skillpoints_in_skill, "SP")}
+                    {}
+                    {mf.formatNumber(skill.skillpoints_in_skill)}
                 </td>
             </tr>;
     }
@@ -163,6 +170,7 @@ const EVECharacterSkills = (props: EVEComponentPropsBase) => {
     const characterId = props.characterId;
     const skillTree = CharProvider.getCharacter(characterId)!.createSkillTree();
     resetSkillSelection();
+    clearSkillSelectionClasses();
     if (skillTree === undefined || skillTree.length === 0) {
         return (
             <CardHeader

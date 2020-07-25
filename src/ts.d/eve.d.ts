@@ -331,6 +331,17 @@ type EVECoordinate = {
     y: number,
     z: number
 };
+interface EVESystemCoordinate {
+  itemID: number;
+  constellationID: number;
+  regionID: number;
+  x: number;
+  y: number;
+  z: number;
+  radius: number;
+  itemName: string;
+  security: number;
+}
 type EVEAssetLocation = {
     item_id: number;
     position: EVECoordinate;

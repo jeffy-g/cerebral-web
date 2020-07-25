@@ -36,7 +36,7 @@ export namespace UniverseUnit {
     }
 }
 const ID_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-";
-export const PrimativeComparator = <T>(a: T, b: T) => {
+export const PrimitiveComparator = <T>(a: T, b: T) => {
     return a < b? -1: +(a > b);
 };
 export const shallowEquals = <T extends Record<string, any>>(a: T, b: T) => {
@@ -211,6 +211,14 @@ export const toLocaleString = (value: number, unit?: string, options?: Intl.Numb
     const formatedNumber = fmt? fmt.format(value): value.toLocaleString(navigator.language, options as Intl.NumberFormatOptions);
     return `${formatedNumber}${unit}`;
 };
+export const formatNumber = (n: number, fractionDigits: number = 3) => {
+    const nstr = (n + "").split(".");
+    const left = nstr[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    if (nstr[1]) {
+        return left + "." + nstr[1].substring(0, fractionDigits);
+    }
+    return left;
+};
 export function createLocalFile(
     data: BlobPart, fileName: string, contentType: string,
 ): void {
@@ -232,8 +240,10 @@ export function createLocalFile(
         () => anchor.click(), 33
     );
 }
+export const getRafFunction = () => window.requestAnimationFrame;
 export const LISTENER_OPTION_ONCE = { once: true };
 export const isFireFox = navigator.userAgent.includes("FireFox");
+export const isChrome = navigator.userAgent.includes("Chrome");
 export function adjustCenterPosition(width: number, height: number) {
     const left = window.outerWidth / 2 - width / 2;
     const top = window.outerHeight / 2 - height / 2;
@@ -315,8 +325,8 @@ export const bindMouseOrTouchEvent = (mlHandlers: TMoveEventListener, b_remove: 
 export const listenerMethod = <B extends boolean, M extends B extends true? "addEventListener": "removeEventListener">(add: B): M => {
     return (add? "addEventListener": "removeEventListener") as M;
 };
-type XEventListener<K extends keyof HTMLElementEventMap> = EventListenerOrEventListenerObject | ((this: HTMLElement, ev: HTMLElementEventMap[K]) => any);
-export const eventListener = <K extends keyof HTMLElementEventMap>(
+type XEventListener<K extends keyof GlobalEventHandlersEventMap> = EventListenerOrEventListenerObject | ((this: HTMLElement, ev: GlobalEventHandlersEventMap[K]) => any);
+export const eventListener = <K extends keyof GlobalEventHandlersEventMap>(
     type: K,
     listener: XEventListener<K>,
     element?: HTMLElement | TQuerySelector,

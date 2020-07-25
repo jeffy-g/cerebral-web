@@ -99,6 +99,9 @@ namespace EVEApplication {
     export const getTheme = (): Theme => {
         return eveAppInstance.getCurrentTheme();
     };
+    export const getThemeType = (): string => {
+        return getTheme().palette.type;
+    };
     export const updateTheme = (themeIndex: number | string) => {
         eveAppInstance.setTheme(themeIndex);
         const listeners: TypedListener<"theme.changed">[] = eventListenerRgistry.getListeners("theme.changed");

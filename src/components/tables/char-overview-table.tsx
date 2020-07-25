@@ -72,7 +72,7 @@ function formatCharStat(char: IEVECharacter) {
     ];
     const currentSkill = char.getCurrentTrainingSkill();
     const skillTrainDetails = [
-        (currentSkill ? `${currentSkill.skill_name} ${currentSkill.finished_level}` : "<span style='color: orange'>Not Training</span>"),
+        (currentSkill ? `${currentSkill.skill_name} ${currentSkill.finished_level}` : "<span class='caveat-text'>Not Training</span>"),
         (currentSkill ? DateTimeUtil.timeUntil(new Date(currentSkill.finish_date)) : "")
     ];
     return { walletAndSkillPoint, skillTrainDetails };

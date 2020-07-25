@@ -29,6 +29,7 @@ declare global {
         typeof BaseConfig,
         | "xUserAgent"
         | "get"
+        | "callback_page"
         | "author_email"
         | "contributor_email"
         | "contract_completed_statuses"

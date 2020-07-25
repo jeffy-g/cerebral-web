@@ -202,3 +202,7 @@ div.app[data-theme="light"] {
         box-shadow: #{$SPREAD-DIM} rgba(9, 218, 22, 0.69);
     }
 }
+.snackbars__message__link {
+    color: var(--special-text-color);
+    pointer-events: auto;
+}

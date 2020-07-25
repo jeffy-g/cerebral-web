@@ -1,7 +1,7 @@
 {
   "application-name": "Cerebral Web",
   "force-inspect": true,
-  "sde-version": "sde-20200602-TRANQUILITY",
+  "sde-version": "sde-20200715-TRANQUILITY",
   "/eve/esi-task": {
     "esiTaskDebug": false,
     "esiTaskParallelity": true,
@@ -9,6 +9,16 @@
   },
   "/app/bg-slide-setting": {
     "images": [
+      "15796-photo.jpg",
+      "1666-photo.jpg",
+      "19455-photo.jpg",
+      "21114-photo.jpg",
+      "24746-photo.jpg",
+      "26939-photo.jpg",
+      "271-photo.jpg",
+      "622-photo.jpg",
+      "8355-photo.jpg",
+      "994-photo.jpg",
       "ab-gate.jpg",
       "ab-vigilant.jpg",
       "ag-dramiel-0.jpg",

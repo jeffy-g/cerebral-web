@@ -29,7 +29,6 @@ declare global {
 }
 let atomicModules: TBC<Promise<IInitializable>[]> = [
     import(        "./eve/ids-to-names").then((mod: IInitializable) => mod),
-    import(       "./eve/farm-producer").then((mod: IInitializable) => mod),
     import(   "./global/shared-storage").then((mod: IInitializable) => mod),
     import(   "./eve/api/esi-scheduler").then((mod: IInitializable) => mod),
     import("./eve/models/auth-provider").then((mod: IInitializable) => mod),

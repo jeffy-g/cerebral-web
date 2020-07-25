@@ -18,7 +18,7 @@
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 */
 import * as mf from "../misc-functions";
-const raf = requestAnimationFrame;
+const raf = mf.getRafFunction();
 export class ProgressManipulator implements IBufferableProgress {
     private incrementableBuffer: boolean;
     private textElement: HTMLElement;

@@ -56,8 +56,8 @@ export const useTimer = <
     }
 };
 export const useSignal = () => {
-    const [count, udate] = R.useState(0);
-    return () => { udate(count + 1); };
+    const [sign, udate] = R.useState(true);
+    return () => { udate(!sign); };
 };
 export function useSetState<T extends {}>(state: T = {} as T) {
     const [cacheState, update] = R.useState<T>(state);

@@ -20,7 +20,8 @@
 import * as R from "react";
 import * as mf from "@util/misc-functions";
 import { createDebugLogger } from "@util/logger";
-const _DEBUG = 0;
+const _DEBUG = 1;
+const debugLog = createDebugLogger("[TransitionCurtain]", _DEBUG, "color: green");
 export type TTransitionCurtainProps = {
     enable: boolean;
     interval: number;
@@ -32,7 +33,7 @@ export type TTransitionCurtainProps = {
 export interface ITransitionCurtain {
     readonly running: boolean;
     transitionCurtainRef: R.RefObject<HTMLDivElement>;
-    setInterrupt: (is: boolean) => void;
+    setEnable: (is: boolean) => void;
 }
 const cancelTimer = (timerIdRef: R.MutableRefObject<number | undefined>): void => {
     if (timerIdRef.current) {
@@ -41,15 +42,14 @@ const cancelTimer = (timerIdRef: R.MutableRefObject<number | undefined>): void =
         debugLog("cancelTimer");
     }
 };
-const debugLog = createDebugLogger("[TransitionCurtain]", _DEBUG, "color: green");
 function setUpTransitionCurtainAccessor(
-    setInterrupt: (is: boolean) => void,
+    cif: ITransitionCurtain,
+    setEnable: (is: boolean) => void,
     tcRef: R.RefObject<HTMLDivElement>,
     runningStateRef: R.RefObject<boolean>,
-    cif: ITransitionCurtain,
 ) {
-    if (cif.setInterrupt !== setInterrupt) {
-        cif.setInterrupt = setInterrupt;
+    if (cif.setEnable !== setEnable) {
+        cif.setEnable = setEnable;
         cif.transitionCurtainRef = tcRef;
         if (cif["running"] === void 0) {
             Object.defineProperty(cif, "running", {
@@ -60,20 +60,20 @@ function setUpTransitionCurtainAccessor(
         }
     }
 }
-function setUpVisibilityChange(setInterrupt: (is: boolean) => void, cancelOnVisiblityChange?: boolean) {
+function setUpVisibilityChange(setEnable: (is: boolean) => void, cancelOnVisiblityChange?: boolean) {
     R.useEffect((): (() => void) | void => {
         const handleVisiblityChange = () => {
             debugLog("visibilitychange, document.hidden -", document.hidden);
-            setInterrupt(document.hidden);
+            setEnable(!document.hidden);
         };
         if (cancelOnVisiblityChange) {
             document.addEventListener("visibilitychange", handleVisiblityChange);
             return () => document.removeEventListener("visibilitychange", handleVisiblityChange);
         }
-    }, [cancelOnVisiblityChange]);
+    }, [setEnable, cancelOnVisiblityChange]);
 }
 function useTransitionCuatainTask(
-    transitionDuration: number, wasInterrupt: boolean,
+    transitionDuration: number, isEnable: boolean,
 ) {
     const timerIdRef           = R.useRef<number>();
     const transitionCurtainRef = R.useRef<HTMLDivElement>(null);
@@ -87,8 +87,8 @@ function useTransitionCuatainTask(
             width: "100vw", height: "100vh",
         } as R.CSSProperties;
     }, [transitionDuration]);
-    debugLog("isInterrupt:", wasInterrupt);
-    if (wasInterrupt) {
+    debugLog("is enable:", isEnable);
+    if (!isEnable) {
         cancelTimer(timerIdRef);
     }
     const emitTask = (dom: HTMLElement, ravine: () => void) => () => {
@@ -136,7 +136,12 @@ export const TransitionCurtain = (props: TTransitionCurtainProps) => {
         curtainInterface: cif,
         cancelOnVisiblityChange
     } = props;
-    const [wasInterrupt, setInterrupt] = R.useState(false);
+    const [sign, forceRedraw] = R.useState(false);
+    const currentEnableRef = R.useRef(enable);
+    const setEnable = R.useCallback((is: boolean) => {
+        currentEnableRef.current = is;
+        forceRedraw(!sign);
+    }, [sign]);
     const [
         tidRef,
         tcRef,
@@ -144,15 +149,15 @@ export const TransitionCurtain = (props: TTransitionCurtainProps) => {
         runningStateRef,
         baseStyles,
         emitTask
-    ] = useTransitionCuatainTask(transitionDuration, wasInterrupt);
+    ] = useTransitionCuatainTask(transitionDuration, currentEnableRef.current);
     R.useEffect(() => {
         const dom = tcRef.current;
         if (dom) {
-            defaultBackgroundRef.current = enable? baseStyles.backgroundColor!: "inherit";
-            if (enable && !wasInterrupt) {
+            defaultBackgroundRef.current = (currentEnableRef.current)? baseStyles.backgroundColor!: "inherit";
+            if (currentEnableRef.current) {
                 if (!tidRef.current) {
                     tidRef.current = window.setInterval(emitTask(dom, ravine), interval);
-                    debugLog("curtain task resumed");
+                    debugLog("curtain task started");
                 } else {
                     debugLog("curtain task is alive");
                 }
@@ -167,10 +172,10 @@ export const TransitionCurtain = (props: TTransitionCurtainProps) => {
     });
     if (typeof cif === "object") {
         setUpTransitionCurtainAccessor(
-            setInterrupt, tcRef, runningStateRef, cif
+            cif, setEnable, tcRef, runningStateRef
         );
     }
-    setUpVisibilityChange(setInterrupt, cancelOnVisiblityChange);
+    setUpVisibilityChange(setEnable, cancelOnVisiblityChange);
     return <div className="transition-curtain"
         style={baseStyles as R.CSSProperties} ref={tcRef}
     />;

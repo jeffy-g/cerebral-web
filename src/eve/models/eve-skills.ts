@@ -302,7 +302,7 @@ export const SkillDB: EVESkillDataBase = {
     3311: {
       tid: 3311,
       name: "Sharpshooter",
-      desc: "Skill at long-range weapon turret firing. 5% bonus to weapon turret optimal range per skill level.",
+      desc: "Skill at long-range weapon turret firing. 5% bonus to weapon optimal range per skill level.",
       mkt_gid: 364,
       mkt_gname: "Gunnery",
       rq_skills: [
@@ -1890,7 +1890,7 @@ export const SkillDB: EVESkillDataBase = {
     3435: {
       tid: 3435,
       name: "Propulsion Jamming",
-      desc: "Skill at using propulsion/warpdrive jammers. 5% Reduction to Warp Scrambler, Warp Disruptor, and Stasis Web capacitor need per skill level. ",
+      desc: "Skill at using propulsion/warpdrive jammers. 5% Reduction to Warp Scrambler, Warp Disruptor, and Stasis Web capacitor need per skill level.",
       mkt_gid: 367,
       mkt_gname: "Electronic Systems",
       rq_skills: [
@@ -3874,7 +3874,7 @@ export const SkillDB: EVESkillDataBase = {
     13278: {
       tid: 13278,
       name: "Archaeology",
-      desc: "Proficiency at identifying and analyzing ancient artifacts. Required skill for the use of Relic Analyzer modules.\r\n\r\nGives +10 Virus Coherence per level.  ",
+      desc: "Proficiency at identifying and analyzing ancient artifacts. Required skill for the use of Relic Analyzer modules.\r\n\r\nGives +10 Virus Coherence per level.",
       mkt_gid: 1110,
       mkt_gname: "Scanning",
       rq_skills: [
@@ -3894,7 +3894,7 @@ export const SkillDB: EVESkillDataBase = {
     13279: {
       tid: 13279,
       name: "Remote Sensing",
-      desc: "The ability to gather and analyze remote sensing data from satellites in orbit around a planet and produce properly calibrated surveys.\r\n\r\nLevel 1: allows scans within 1 ly\r\nLevel 2: allows scans within 3 ly\r\nLevel 3: allows scans within 5 ly\r\nLevel 4: allows scans within 7 ly\r\nLevel 5: allows scans within 9 ly\r\n ",
+      desc: "The ability to gather and analyze remote sensing data from satellites in orbit around a planet and produce properly calibrated surveys.\r\n\r\nLevel 1: allows scans within 1 ly\r\nLevel 2: allows scans within 3 ly\r\nLevel 3: allows scans within 5 ly\r\nLevel 4: allows scans within 7 ly\r\nLevel 5: allows scans within 9 ly\r\n",
       mkt_gid: 1823,
       mkt_gname: "Planet Management",
       rq_skills: [
@@ -4026,7 +4026,7 @@ export const SkillDB: EVESkillDataBase = {
     16597: {
       tid: 16597,
       name: "Advanced Broker Relations",
-      desc: "Ability to make potentially risky investments work in your favor. Each level of skill reduces the percentage of ISK placed in market escrow when entering buy orders. Starting with an escrow percentage of 100% at Level 0 (untrained skill), each skill level cumulatively reduces the percentage by 25%. This will bring your total escrow down to approximately 24% at level 5.",
+      desc: "Proficiency at negotiating the brokerage cost of relisting a market order at a new price. Each level of this skill adds <b>5 percentage points</b> to the standard <b>Relist Discount of 50%</b>.\r\n\r\nSCC regulations aimed at reducing market volatility mandate a cost for relisting a market order based on the Broker Fee rate applicable to a given market order at the time of the price change.\r\n\r\nThe total brokerage costs for relisting are calculated in two steps:\r\n- The full Broker Fee rate is applied to the increment by which the price has changed if the new price is an <b>increase</b> to determine the brokerage cost of raising the asking price. If the new price is a <b>decrease</b> this component of the brokerage cost for relisting is <b>zero</b>.\r\n- A <b>Relist Discount</b> is then applied to the Broker Fee rate and the discounted rate then applied to the total new price. The resulting amount is added to the increment charge calculated in the first step.\r\nThe total calculated in these two steps is the brokerage cost that will be charged for relisting the market order at its new price.\r\n\r\nThe standard Relist Discount on the total price brokerage fee has been set by the SCC at <b>50%</b>. Advanced Broker Relations increases that discount by <b>5 percentage points</b> per level, permitting a discount of <b>75% at level 5</b>.",
       mkt_gid: 378,
       mkt_gname: "Trade",
       rq_skills: [
@@ -5964,7 +5964,7 @@ export const SkillDB: EVESkillDataBase = {
     26252: {
       tid: 26252,
       name: "Jury Rigging",
-      desc: "General understanding of the inner workings of starship components. Allows makeshift modifications to ship systems through the use of rigs. Required learning for further study in the field of rigging. ",
+      desc: "General understanding of the inner workings of starship components. Allows makeshift modifications to ship systems through the use of rigs. Required learning for further study in the field of rigging.",
       mkt_gid: 372,
       mkt_gname: "Rigging",
       rq_skills: [
@@ -8351,6 +8351,336 @@ export const SkillDB: EVESkillDataBase = {
       p_attr: "perception",
       s_attr: "willpower",
       ttm: 7
+    },
+    54790: {
+      tid: 54790,
+      name: "EDENCOM Frigate (old)",
+      desc: "Skill at operating ship designs commissioned as EDENCOM frigates.",
+      mkt_gid: 377,
+      mkt_gname: "Spaceship Command",
+      rq_skills: [
+        {
+          id: 3327,
+          level: 1
+        }
+      ],
+      p_attr: "perception",
+      s_attr: "willpower",
+      ttm: 2
+    },
+    54793: {
+      tid: 54793,
+      name: "EDENCOM Cruiser (old)",
+      desc: "Skill at operating ship designs commissioned as EDENCOM cruisers.",
+      mkt_gid: 377,
+      mkt_gname: "Spaceship Command",
+      rq_skills: [
+        {
+          id: 3327,
+          level: 2
+        },
+        {
+          id: 54790,
+          level: 3
+        }
+      ],
+      p_attr: "perception",
+      s_attr: "willpower",
+      ttm: 5
+    },
+    54794: {
+      tid: 54794,
+      name: "EDENCOM Battleship",
+      desc: "Skill at operating ship designs commissioned as EDENCOM battleships.",
+      mkt_gid: 377,
+      mkt_gname: "Spaceship Command",
+      rq_skills: [
+        {
+          id: 3327,
+          level: 5
+        },
+        {
+          id: 55032,
+          level: 3
+        }
+      ],
+      p_attr: "perception",
+      s_attr: "willpower",
+      ttm: 8
+    },
+    54824: {
+      tid: 54824,
+      name: "Small Vorton Projector (old)",
+      desc: "Operation of small Arcing Vorton Projector turrets.\r\n5% bonus to Small Vorton Projector damage per skill level.",
+      mkt_gid: 364,
+      mkt_gname: "Gunnery",
+      rq_skills: [
+        {
+          id: 54839,
+          level: 1
+        }
+      ],
+      p_attr: "perception",
+      s_attr: "willpower",
+      ttm: 1
+    },
+    54825: {
+      tid: 54825,
+      name: "Medium Vorton Projector (old)",
+      desc: "Operation of medium Arcing Vorton Projector turrets.\r\n5% bonus to Medium Vorton Projector damage per skill level.",
+      mkt_gid: 364,
+      mkt_gname: "Gunnery",
+      rq_skills: [
+        {
+          id: 54839,
+          level: 3
+        },
+        {
+          id: 54824,
+          level: 3
+        }
+      ],
+      p_attr: "perception",
+      s_attr: "willpower",
+      ttm: 3
+    },
+    54826: {
+      tid: 54826,
+      name: "Large Vorton Projector",
+      desc: "Operation of Large Arcing Vorton Projector turrets.\r\n\r\n5% bonus to Large Vorton Projector damage per skill level.",
+      mkt_gid: 364,
+      mkt_gname: "Gunnery",
+      rq_skills: [
+        {
+          id: 55033,
+          level: 5
+        },
+        {
+          id: 55035,
+          level: 3
+        }
+      ],
+      p_attr: "perception",
+      s_attr: "willpower",
+      ttm: 5
+    },
+    54827: {
+      tid: 54827,
+      name: "Small Vorton Specialization",
+      desc: "Specialist training in the operation of advanced Small Arcing Vorton Projector turrets.\r\n\r\n2% bonus to Small Vorton projector Damage per skill level.",
+      mkt_gid: 364,
+      mkt_gname: "Gunnery",
+      rq_skills: [
+        {
+          id: 54841,
+          level: 3
+        },
+        {
+          id: 55034,
+          level: 5
+        }
+      ],
+      p_attr: "perception",
+      s_attr: "willpower",
+      ttm: 3
+    },
+    54828: {
+      tid: 54828,
+      name: "Medium Vorton Specialization",
+      desc: "Specialist training in the operation of advanced Medium Arcing Vorton Projector turrets.\r\n\r\n2% bonus to Medium Vorton projector Damage per skill level.",
+      mkt_gid: 364,
+      mkt_gname: "Gunnery",
+      rq_skills: [
+        {
+          id: 54841,
+          level: 4
+        },
+        {
+          id: 55035,
+          level: 5
+        }
+      ],
+      p_attr: "perception",
+      s_attr: "willpower",
+      ttm: 5
+    },
+    54829: {
+      tid: 54829,
+      name: "Large Vorton Specialization",
+      desc: "Specialist training in the operation of advanced Large Arcing Vorton Projector turrets.\r\n\r\n2% bonus to Large Vorton projector Damage per skill level.",
+      mkt_gid: 364,
+      mkt_gname: "Gunnery",
+      rq_skills: [
+        {
+          id: 54841,
+          level: 5
+        },
+        {
+          id: 54826,
+          level: 5
+        }
+      ],
+      p_attr: "perception",
+      s_attr: "willpower",
+      ttm: 8
+    },
+    54839: {
+      tid: 54839,
+      name: "Vorton Projector Operation (old)",
+      desc: "Basic operation of sub-capital volton projectors. 2% Bonus to Vorton Projector rate of fire per skill level.",
+      mkt_gid: 364,
+      mkt_gname: "Gunnery",
+      rq_skills: [],
+      p_attr: "perception",
+      s_attr: "willpower",
+      ttm: 1
+    },
+    54840: {
+      tid: 54840,
+      name: "Vorton Power Amplification",
+      desc: "Skill in amplifying the power of ship-based Arcing Vorton Projectors to maximize damage output.\r\n\r\n3% bonus to Vorton Projector damage per skill level.",
+      mkt_gid: 364,
+      mkt_gname: "Gunnery",
+      rq_skills: [
+        {
+          id: 55033,
+          level: 4
+        }
+      ],
+      p_attr: "perception",
+      s_attr: "willpower",
+      ttm: 4
+    },
+    54841: {
+      tid: 54841,
+      name: "Vorton Arc Guidance",
+      desc: "Skill in tuning wave-guides of ship-based Arcing Vorton Projectors to improve strikes on fast-moving targets.\r\n\r\n5% bonus to Vorton Projector explosion radius and explosion velocity per skill level.",
+      mkt_gid: 364,
+      mkt_gname: "Gunnery",
+      rq_skills: [
+        {
+          id: 55033,
+          level: 2
+        }
+      ],
+      p_attr: "perception",
+      s_attr: "willpower",
+      ttm: 2
+    },
+    55025: {
+      tid: 55025,
+      name: "Upwell Encryption Methods",
+      desc: "Understanding of the data encryption methods used by the Upwell Consortium and its allies.",
+      mkt_gid: 375,
+      mkt_gname: "Science",
+      rq_skills: [
+        {
+          id: 21718,
+          level: 2
+        }
+      ],
+      p_attr: "intelligence",
+      s_attr: "memory",
+      ttm: 5
+    },
+    55031: {
+      tid: 55031,
+      name: "EDENCOM Frigate",
+      desc: "Skill at operating ship designs commissioned as EDENCOM frigates.",
+      mkt_gid: 377,
+      mkt_gname: "Spaceship Command",
+      rq_skills: [
+        {
+          id: 3327,
+          level: 1
+        }
+      ],
+      p_attr: "perception",
+      s_attr: "willpower",
+      ttm: 2
+    },
+    55032: {
+      tid: 55032,
+      name: "EDENCOM Cruiser",
+      desc: "Skill at operating ship designs commissioned as EDENCOM cruisers.",
+      mkt_gid: 377,
+      mkt_gname: "Spaceship Command",
+      rq_skills: [
+        {
+          id: 3327,
+          level: 2
+        },
+        {
+          id: 55031,
+          level: 3
+        }
+      ],
+      p_attr: "perception",
+      s_attr: "willpower",
+      ttm: 5
+    },
+    55033: {
+      tid: 55033,
+      name: "Vorton Projector Operation",
+      desc: "Basic skill for operation of ship-based Arcing Vorton Projectors.\r\n\r\n2% Bonus to all Vorton Projectors' rate of fire per skill level.",
+      mkt_gid: 364,
+      mkt_gname: "Gunnery",
+      rq_skills: [],
+      p_attr: "perception",
+      s_attr: "willpower",
+      ttm: 1
+    },
+    55034: {
+      tid: 55034,
+      name: "Small Vorton Projector",
+      desc: "Operation of Small Arcing Vorton Projector turrets.\r\n\r\n5% Bonus to Small Vorton Projector damage per level.",
+      mkt_gid: 364,
+      mkt_gname: "Gunnery",
+      rq_skills: [
+        {
+          id: 55033,
+          level: 1
+        }
+      ],
+      p_attr: "perception",
+      s_attr: "willpower",
+      ttm: 1
+    },
+    55035: {
+      tid: 55035,
+      name: "Medium Vorton Projector",
+      desc: "Operation of Medium Arcing Vorton Projector turrets.\r\n\r\n5% Bonus to Medium Vorton Projector damage per level.",
+      mkt_gid: 364,
+      mkt_gname: "Gunnery",
+      rq_skills: [
+        {
+          id: 55033,
+          level: 3
+        },
+        {
+          id: 55034,
+          level: 3
+        }
+      ],
+      p_attr: "perception",
+      s_attr: "willpower",
+      ttm: 3
+    },
+    55511: {
+      tid: 55511,
+      name: "Vorton Arc Extension",
+      desc: "Skill in extending arc-channelling of ship-based Arcing Vorton Projectors to boost effective range.\r\n\r\n5% bonus to Vorton Projector optimal range per skill level.",
+      mkt_gid: 364,
+      mkt_gname: "Gunnery",
+      rq_skills: [
+        {
+          id: 55033,
+          level: 2
+        }
+      ],
+      p_attr: "perception",
+      s_attr: "willpower",
+      ttm: 2
     }
   },
   groups: [
@@ -8542,7 +8872,20 @@ export const SkillDB: EVESkillDataBase = {
         47873,
         47874,
         47875,
-        52998
+        52998,
+        54824,
+        54825,
+        54826,
+        54827,
+        54828,
+        54829,
+        54839,
+        54840,
+        54841,
+        55033,
+        55034,
+        55035,
+        55511
       ]
     },
     {
@@ -8763,7 +9106,8 @@ export const SkillDB: EVESkillDataBase = {
         30327,
         30788,
         52307,
-        52308
+        52308,
+        55025
       ]
     },
     {
@@ -8892,7 +9236,12 @@ export const SkillDB: EVESkillDataBase = {
         47869,
         49742,
         49743,
-        52997
+        52997,
+        54790,
+        54793,
+        54794,
+        55031,
+        55032
       ]
     },
     {

@@ -52,8 +52,11 @@ table.skill-group-details {
             transition: filter 777ms ease 555ms;
         }
         &.skill-points {
-            width: 80px;
+            width: 84px;
             text-align: right;
+            &::after {
+                content: "\2002SP";
+            }
         }
     }
 }

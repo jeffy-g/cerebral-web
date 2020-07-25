@@ -357,16 +357,6 @@ const ESIRequestConfig: EVEESIRequestConfig = {
             scope: "esi-skills.read_skills.v1"
         },
         {
-            interval: 86400,
-            operationId: "get_characters_character_id_stats",
-            summary: "Yearly aggregate stats",
-            context: {
-                bindName: "stats",
-                endpoint: "/characters/{character_id}/stats/"
-            },
-            scope: "esi-characterstats.read.v1"
-        },
-        {
             interval: 120,
             operationId: "get_characters_character_id_wallet",
             summary: "Get a character's wallet balance",
@@ -404,7 +394,6 @@ const ESIRequestConfig: EVEESIRequestConfig = {
         "esi-characters.read_contacts.v1": "Read character contacts and contacts labels",
         "esi-characters.read_fatigue.v1": "Return a character’s jump activation and fatigue information",
         "esi-characters.read_loyalty.v1": "Return a list of loyalty points for all corporations the character has worked for",
-        "esi-characterstats.read.v1": "Returns aggregate yearly stats for a character",
         "esi-clones.read_clones.v1": "A list of the character’s clones",
         "esi-clones.read_implants.v1": "Return implants on the active clone of a character",
         "esi-contracts.read_character_contracts.v1": "Returns contracts available to a character",

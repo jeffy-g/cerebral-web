@@ -17,7 +17,6 @@
   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 */
-/// <reference path="./basic-types.d.ts"/>
 interface IdleRequestOptions {
     timeout: number;
 }

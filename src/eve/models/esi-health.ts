@@ -20,7 +20,7 @@
 import { ESI_BASE } from "./constants";
 const _DEBUG = 1;
 const ADJUST = 10_000;
-let nsl_Expires = Date.now();
+let nsl_Expires = 0;
 function emitRequest() {
     let petag: TBC<string> = null;
     let hscache: ESIHealthStatus[] = [];
@@ -40,13 +40,21 @@ function emitRequest() {
             `${ESI_BASE}/status.json?version=latest`, opt
         ).then(res => {
             const st = res.status;
-            petag = res.headers.get("etag");
-            nsl_Expires = Date.parse(res.headers.get("expires")!) + ADJUST;
-            _DEBUG && console.log(
-                "----> esi health status response: etag=%s, http::status=%s, expires=%s",
-                petag, st, new Date(nsl_Expires).toLocaleTimeString()
-            );
-            return st === 200? res.json(): void 0;
+            if (st === 200) {
+                petag = res.headers.get("etag");
+                nsl_Expires = Date.parse(res.headers.get("expires")!) + ADJUST;
+                _DEBUG && console.log(
+                    "----> esi health status response: etag=%s, http::status=%s, expires=%s",
+                    petag, st, new Date(nsl_Expires).toLocaleTimeString()
+                );
+                return res.json();
+            } else {
+                if (st !== 304) {
+                    nsl_Expires = 0;
+                    petag = null;
+                }
+                return void 0;
+            }
         });
         if (healthes) {
             hscache = healthes;
@@ -56,8 +64,12 @@ function emitRequest() {
 }
 export const getStatus = emitRequest();
 export const getCurrentESIHealthExpires = <K extends NorSFunctions<Date>>(method?: K): ReturnType<Date[K]> => {
-    if (method) {
-        return new Date(nsl_Expires)[method]() as ReturnType<Date[K]>;
+    const exp = nsl_Expires;
+    if (exp === 0) {
+        return "N/A" as ReturnType<Date[K]>;
     }
-    return nsl_Expires as ReturnType<Date[K]>;
+    if (method) {
+        return new Date(exp)[method]() as ReturnType<Date[K]>;
+    }
+    return exp as ReturnType<Date[K]>;
 };

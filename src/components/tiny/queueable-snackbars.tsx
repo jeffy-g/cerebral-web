@@ -78,6 +78,19 @@ const dateFormatOpt = {
     second: "2-digit"
 } as Intl.DateTimeFormatOptions;
 const DEFAULT_HIDE = 8e3;
+function ifContainedLink(message: string): R.ReactNode {
+    const re = /https?:\/\/[\w.\-\/]+/g;
+    const m = re.exec(message);
+    if (m) {
+        const before = message.substring(0, m.index);
+        const link = m[0];
+        const after = message.substring(re.lastIndex);
+        return <>
+            {before}<a href={link} target="_blank" title="open link in new window" className="snackbars__message__link">{link}</a>{after}
+        </>;
+    }
+    return message;
+}
 export class QueueableSnackbars extends R.Component<QueueableSnackbarsProps, QueueableSnackbarsState> {
     private queue: SnackbarMessage[] = [];
     state: QueueableSnackbarsState = {
@@ -126,8 +139,9 @@ export class QueueableSnackbars extends R.Component<QueueableSnackbarsProps, Que
             messageInfo = DUMMY_MESSAGE
         } = this.state;
         const color = MESSAGE_STATE_COLORs[messageInfo.state];
-        const messageNode = <>{messageInfo.rowMessage}
-            <span style={timeStampStyle}
+        const messageNode = <>{
+                ifContainedLink(messageInfo.rowMessage)
+            }<span style={timeStampStyle}
                 role="img" aria-label="time-stamp"
             >⏰{messageInfo.at.toLocaleString(void 0, dateFormatOpt)}</span>
         </>;

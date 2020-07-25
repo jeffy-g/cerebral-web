@@ -160,9 +160,7 @@ export const remove = async (bannedCharacterId: EVEId) => {
 };
 export const init = async (force: boolean = false) => {
     return load(force).then(async () => {
-        return import("./character").then(m => {
-            return m.init(force);
-        });
+        await import("./character").then(m => m.init(force));
     });
 };
 const load = async (force: boolean = false) => {

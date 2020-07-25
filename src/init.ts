@@ -21,7 +21,10 @@
     let runApplication: TBC<() => void> =  async () => {
         console.log("---------- Fire main entry point");
         runApplication = null;
-        if (/https?:/.test(location.protocol) && navigator.serviceWorker) {
+        if (
+            /https?:/.test(location.protocol) && navigator.serviceWorker &&
+            typeof navigator.serviceWorker.constructor === "function"
+        ) {
             navigator.serviceWorker.register("./sw.js");
             console.log("service worker registered");
         }

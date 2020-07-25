@@ -20,9 +20,9 @@
 import * as R from "react";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import ExpansionPanel from "@material-ui/core/ExpansionPanel";
-import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
-import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
+import Accordion from "@material-ui/core/Accordion";
+import AccordionSummary from "@material-ui/core/AccordionSummary";
+import AccordionDetails from "@material-ui/core/AccordionDetails";
 import * as Extras from "@com/tiny/extras";
 import { createActiveImplantList, listItemClasses, listItemTextClasses } from "./extras";
 const LocationIcon = <span className="material-icons icon-location--inline">place</span>;
@@ -41,18 +41,18 @@ const createJumpCloneDetails = (jClones: EVEJumpCloneEx[]) => {
             const jlocation = jClone.location;
             const JumpCloneLocationDetail = jlocation && jlocation.name || "Unknown Location";
             elements.push(
-                <ExpansionPanel square TransitionProps={TransitionProps} key={jClone.jump_clone_id} className="jumpclone-details">
-                    <ExpansionPanelSummary classes={PanelSummaryClasses}>
+                <Accordion square TransitionProps={TransitionProps} key={jClone.jump_clone_id} className="jumpclone-details">
+                    <AccordionSummary classes={PanelSummaryClasses}>
                         <p className="jumpclone-details__title"><strong>Name: </strong>{jname || "N/A"}</p>
-                    </ExpansionPanelSummary>
+                    </AccordionSummary>
                     {}
-                    <ExpansionPanelDetails className="expansion-panel-details padding-0">
+                    <AccordionDetails className="expansion-panel-details padding-0">
                         {LocationIcon}{JumpCloneLocationDetail}
                         {
                             createActiveImplantList(jClone.implants, true, "No Implants Installed")
                         }
-                    </ExpansionPanelDetails>
-                </ExpansionPanel>
+                    </AccordionDetails>
+                </Accordion>
             );
         }
         return elements;

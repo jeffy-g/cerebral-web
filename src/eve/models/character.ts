@@ -135,7 +135,6 @@ class C implements EVECharacterData {
     last_clone_jump_date?: DateString;
     last_station_change_date?: DateString;
     ship!: EVEShip;
-    stats: CharStats[] = [];
     online: EVECharacterOnline = DUMMY_ONLINE_STATE;
     attributes: EVECharacterAttributes = {} as EVECharacterAttributes;
     implants: ImplantData[] = [];

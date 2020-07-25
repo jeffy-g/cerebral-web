@@ -144,7 +144,7 @@ export class SkillPlanTable extends R.Component<SkillPlanTableProps, SkillPlanTa
         } else if (testIndex === -1) {
             copies = [index];
         }
-        copies.length > 1 && copies.sort(mf.PrimativeComparator);
+        copies.length > 1 && copies.sort(mf.PrimitiveComparator);
         this.selection = copies;
         this.forceUpdate();
         requestAnimationFrame(() => {

@@ -38,6 +38,7 @@ namespace _AppStartupHelper {
             startUpTasks.shift()!.run();
         }
         (() => {
+            // @ts-ignore Temporary response to "TS2790: The operand of a 'delete' operator must be optional." (200722
             const success = delete window["AppStartupHelper"];
             console.log("AppStartupHelper::onStartUp, delete:", success);
         }).emitDefer(800);

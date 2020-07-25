@@ -1,10 +1,15 @@
 import * as R from "react";
 import { Route } from "react-router";
-import * as CharacterSheetBase from "./character-sheet-base";
-const DEBUG = 0;
+import * as CharacterSheetApi from "./character-sheet-api";
+import {
+    CharacterSheetsProps,
+    CharacterSheetsState,
+    CharacterPageEntryProps,
+} from "./character-sheet-api";
+const DEBUG = 1;
 const log = console.log;
-class CharacterSheets extends R.Component<CharacterSheetBase.CharacterSheetsProps, CharacterSheetBase.CharacterSheetsState> {
-    constructor(props: CharacterSheetBase.CharacterSheetsProps) {
+class CharacterSheets extends R.Component<CharacterSheetsProps, CharacterSheetsState> {
+    constructor(props: CharacterSheetsProps) {
         super(props);
         this.state = {
             currentPage: "Summary",
@@ -15,10 +20,13 @@ class CharacterSheets extends R.Component<CharacterSheetBase.CharacterSheetsProp
         if (DEBUG) log("CharacterSheets::render");
         const { characterId } = this.props.match!.params;
         const { currentPage } = this.state;
-        const props: CharacterSheetBase.CharacterPageEntryProps = {
+        const props: CharacterPageEntryProps = {
             characterId
         };
-        const [buttons, PageComponent] = CharacterSheetBase.getComponents(currentPage, this);
+        const [buttons, PageComponent] = CharacterSheetApi.getComponents(currentPage, this);
+        if (PageComponent === void 0) {
+            throw new ReferenceError("Could not get page component!");
+        }
         return <>
             <div className="sheets-button-container">{buttons}</div>
             <PageComponent { ...props }/>

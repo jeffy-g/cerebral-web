@@ -30,9 +30,9 @@ import Checkbox, { CheckboxProps } from "@material-ui/core/Checkbox";
 import List from "@material-ui/core/List";
 import CardHeader, { CardHeaderProps } from "@material-ui/core/CardHeader";
 import DialogTitle, { DialogTitleProps } from "@material-ui/core/DialogTitle";
-import ExpansionPanel, { ExpansionPanelProps } from "@material-ui/core/ExpansionPanel";
-import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
-import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
+import Accordion, { AccordionProps } from "@material-ui/core/Accordion";
+import AccordionSummary from "@material-ui/core/AccordionSummary";
+import AccordionDetails from "@material-ui/core/AccordionDetails";
 import Card from "@material-ui/core/Card";
 import Collapse from "@material-ui/core/Collapse";
 import red from "@material-ui/core/colors/red";
@@ -393,9 +393,9 @@ const PanelSummaryIconButtonProps = {
         marginRight: 10
     }
 };
-const ExpansionPanelExpandIcon = <Icon>expand_more</Icon>;
+const AccordionExpandIcon = <Icon>expand_more</Icon>;
 const TransitionProps = { unmountOnExit: true, mountOnEnter: true };
-export type CustomExpansionPanelProps = ExcludePick<ExpansionPanelProps, "children"> & {
+export type CustomExpansionPanelProps = ExcludePick<AccordionProps, "children"> & {
     listItemContent: R.ReactNode;
     detailsContent: R.ReactNode;
     defaultExpanded?: boolean;
@@ -410,22 +410,22 @@ export const CustomExpansionPanel = (props: CustomExpansionPanelProps) => {
         expanded,
         TransitionProps: extraTransitionProps = onil()
     } = props;
-    return <ExpansionPanel className="mui-custom-card" defaultExpanded={defaultExpanded}
+    return <Accordion className="mui-custom-card" defaultExpanded={defaultExpanded}
         expanded={expanded}
         TransitionProps={{...TransitionProps, ...extraTransitionProps}}
     >
-        <ExpansionPanelSummary
+        <AccordionSummary
             classes={PanelSummaryClasses}
-            expandIcon={ExpansionPanelExpandIcon}
+            expandIcon={AccordionExpandIcon}
             IconButtonProps={PanelSummaryIconButtonProps}
         >
             <List>{listItemContent}</List>
-        </ExpansionPanelSummary>
+        </AccordionSummary>
         {}
-        <ExpansionPanelDetails className="expansion-panel-details medium-padding" data-autoheight={autoHeight}>
+        <AccordionDetails className="expansion-panel-details medium-padding" data-autoheight={autoHeight}>
             {detailsContent}
-        </ExpansionPanelDetails>
-    </ExpansionPanel>;
+        </AccordionDetails>
+    </Accordion>;
 };
 type CollapseCardProps = CardHeaderProps & {
     open: boolean,

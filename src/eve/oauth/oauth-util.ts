@@ -44,7 +44,7 @@ const rndByte32 = () => {
     return numbers;
 };
 const wsbfu = (u8a: number[] | Uint8Array) => {
-    // @ts-ignore
+    // @ts-ignore typescript type detection broken?
     return btoa(String.fromCharCode.apply(null, u8a))
         .replace(/\+/g, "-")
         .replace(/\//g, "_")

@@ -31,6 +31,8 @@ import * as ap from "./models/auth-provider";
 import * as cp from "./models/char-provider";
 import * as esi from "@eve/api/esi-client";
 import * as prog from "@com/tiny/progress";
+import * as mf from "@util/misc-functions";
+import { restrictor } from "mini-semaphore";
 const DEBUG = true;
 export const AuthProvider = ap;
 export const CharProvider = cp;
@@ -75,7 +77,7 @@ export namespace Task {
         () => grp()
     );
     progress.css = "--progbar-component-top: 10px; --progbar-component-right: 210px; --progbar-component-width: 230px; line-height: 10px;";
-    progress.barHeight = 6;
+    progress.barHeight = mf.isChrome ? 6 : 4;
     export const esiRequestGauge = (show = true, interval = 33) => {
         const opt = { show, interval };
         progress.operation(opt);
@@ -89,4 +91,13 @@ export namespace Task {
     export function isESITaskRunning(): boolean {
         return cc.isTaskRunning();
     }
+    export const runMiniSemaphoreCleanupTask = (run: boolean, timeSpan = 180) => {
+        BackgroundTaskManager.operateTimerTask("mini-sema-cleanup", {
+            action: run ? "start": "remove", interval: 60 * 1000
+        }, () => {
+            restrictor.cleanup(timeSpan, DEBUG).then(purged => {
+                mf.log(`Mini Semaphore restrictor cleanup: ${purged}`);
+            });
+        });
+    };
 }

@@ -115,28 +115,31 @@ export const removeTask = (name: string) => {
 export const getTask = (name: string) => {
     return isServiceTask(name)? void 0: taskRegistry[name];
 };
-type TCallback<T = any> = (data: TTimerTaskResponse<T>["result"]) => void;
-const callbackRecord: Record<string, TCallback | undefined> = {};
+type TTimerTaskCallback<T = any> = (result: TTimerTaskResponse<T>["result"]) => void;
+const callbackRecord: Record<string, TTimerTaskCallback | undefined> = {};
 export const operateTimerTask = <T = any>(
     timerName: string,
     payload: TTimerTaskPayLoad,
-    callback?: TCallback<T>,
+    callback?: TTimerTaskCallback<T>,
 ) => {
-    const timerWorker = taskRegistry[BasicServices.TimerTask]!;
     const isFire = payload.action === "start";
-    if (isFire && (!payload.interval || payload.interval < 5)) {
-        payload.interval = 5;
-    }
-    isFire && (
-        callbackRecord[timerName] = callback!,
+    if (isFire) {
+        if (typeof callbackRecord[timerName] === "function") {
+            console.warn(`operateTimerTask: This operation was ignored because "${timerName}" already exists`);
+            return;
+        }
+        if (!payload.interval || payload.interval < 5) {
+            payload.interval = 5;
+        }
+        callbackRecord[timerName] = callback!;
         (typeof payload.taskBody === "function") && (
             payload.taskBody = `() => ${payload.taskBody! + ""}`
-        ) || 1
-    ) || (
+        );
+    } else {
         payload.taskBody = void 0,
-        payload.action !== "list" && delete callbackRecord[timerName]
-    );
-    timerWorker.postMessage({ [timerName]: payload });
+        payload.action !== "list" && delete callbackRecord[timerName];
+    }
+    taskRegistry[BasicServices.TimerTask]!.postMessage({ [timerName]: payload });
 };
 createTask({
     name: BasicServices.TimerTask, code: timerTaskCode,

@@ -17,8 +17,18 @@
   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 */
+declare module "*.png" {
+    const contents: any;
+    export = contents;
+}
 type TBD<T> = T | undefined;
 type TBC<T> = T | null;
+type DecideType<T> = T extends infer P? P : T;
+type Conditional<T, A, B> = unknown extends T ? B : false extends T ? B : A;
+type BasicIterator<T> = Iterator<T, T, T>;
+type XReadonly<T> = {
+    -readonly [P in keyof T]: T[P];
+};
 type JsonValueTypes = string | number | boolean | object | (number | string | boolean | object)[];
 type InterfaceType<T> = {
     [P in keyof T]: T[P];
@@ -30,13 +40,25 @@ type ExcludePick<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 type Flip<T, K extends keyof T> = {
     [P in Exclude<keyof T, K>]: T[P];
 };
+type RequiredParameters<TFunction extends (...args: any) => any> = Required<
+    Parameters<TFunction>
+>;
 type PickProperties<P, T> = { [K in keyof T]-?: T[K] extends P ? K : never }[keyof T];
 type PickNumberProperties<T> = PickProperties<number, T>;
 type PickStringProperties<T> = PickProperties<string, T>;
 type NonFunctionPropertyNames<T> = { [K in keyof T]-?: T[K] extends Function ? never : K }[keyof T];
 type NonFunctionProperties<T> = Pick<T, NonFunctionPropertyNames<T>>;
 type NorSFunctions<T> = { [K in keyof T]: T[K] extends (() => number | string) ? K : never }[keyof T];
-type QueryValueTypes = string | number | boolean;
+type Unpacked<T> =
+    T extends (infer U)[] ? U :
+    T extends (...args: any[]) => infer U ? U :
+    T extends Promise<infer U> ? U :
+    T;
+type SimpleUnpack<T> = T extends (...args: any[]) => infer U ? U :
+    T extends Promise<infer U> ? U :
+    T;
+type UnpackReturnType<T extends (...args: any[]) => any> = Unpacked<ReturnType<T>>;
+type QueryValueTypes = string | number | boolean | Date;
 type DateString = string;
 type TQuerySelector = string;
 type NumberMap<T> = {

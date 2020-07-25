@@ -25,27 +25,22 @@ const AuthStateContexts = {
     not_yet: {
         tip: "token refresh has not been done yet",
         micon: "check_circle",
-        color: "silver"
     },
     expired_not_yet: {
         tip: "token has expired and token has not been refreshed yet",
         micon: "warning",
-        color: "silver"
     },
     failed: {
         tip: "failed last time token request",
         micon: "warning",
-        color: "red"
     },
     expired: {
         tip: "token expired",
         micon: "warning",
-        color: "#e8e800"
     },
     healthy: {
         tip: "healthy",
         micon: "check_circle",
-        color: "#5be8a4"
     },
 };
 type AuthStateContextKeys = keyof typeof AuthStateContexts;
@@ -67,7 +62,6 @@ const validateAuthState = (parentSelector?: string) => {
         if (icon.title !== currentAuthState.tip) {
             icon.title = currentAuthState.tip;
             icon.textContent = currentAuthState.micon;
-            icon.style.color = currentAuthState.color;
             counter++;
         }
     }

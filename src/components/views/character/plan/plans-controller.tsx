@@ -222,7 +222,7 @@ export const PlansController: R.FunctionComponent<PlansControllerProps> = (props
                 >
                     <MenuItem value="0" >- blank plan -</MenuItem>
                     {props.planSummaries.map(plan => {
-                        return (<MenuItem key={plan.id} value={plan.id}>{plan.name}</MenuItem>);
+                        return <MenuItem key={plan.id} value={plan.id}>{plan.name}</MenuItem>;
                     })}
                 </Select>
             </FormControl>

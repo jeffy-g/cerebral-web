@@ -47,7 +47,7 @@
     &__isk {
         font-size: inherit;
 		font-weight: 600;
-        color: rgb(68, 179, 222);
+        color: var(--special-text-color);
     }
 }
 $OVERVIEW-ROW-OPACITY-TIME: 777ms;
@@ -59,7 +59,7 @@ $OVERVIEW-ROW-OPACITY-TIME: 777ms;
     }
     $w60: 60px;
     $w140: 140px;
-    $w200: 200px;
+    $w200: 220px;
     td {
         &:nth-child(3) {
             width: $w200;

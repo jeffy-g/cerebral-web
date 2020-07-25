@@ -103,6 +103,7 @@ export const Station = new class Station extends EURGarage.ESIUniverseBase<EVESt
         this.esiData![id] = station;
         station.system = await System.resolve(station.system_id);
         station.type = await Types.resolve(station.type_id);
+        // @ts-ignore Temporary response to "TS2790: The operand of a 'delete' operator must be optional." (200722
         delete station.max_dockable_ship_volume;
         return station;
     }

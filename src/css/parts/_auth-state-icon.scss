@@ -1,0 +1,18 @@
+@charset "utf-8";
+.auth-state-icon {
+    &[title*="done yet"], &[title*="refreshed yet"] {
+        color: silver;
+    }
+    &[title*="failed"] {
+        color: red;
+    }
+    &[title="token expired"] {
+        color: rgb(255, 225, 0);
+        @at-root .app[data-theme="light"] & {
+            color: rgb(255, 177, 0);
+        }
+    }
+    &[title*="healthy"] {
+        color: #5be8a4;
+    }
+}

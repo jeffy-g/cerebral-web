@@ -77,6 +77,7 @@ export interface IEVEOAuth2 {
     refresh(refresh_token: string): Promise<TEVEOAuthRefreshResult>;
     revoke(refresh_token: string): Promise<boolean>;
 }
+// @ts-ignore cannot detect writable property (TS2540)
 const s = create(5);
 export class Wrapper implements IEVEOAuth2 {
     private clientId: string;

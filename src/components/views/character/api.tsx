@@ -15,15 +15,17 @@ function shiftClassName(this: HTMLElement, state: ESIHealthStatusTokens | "dead"
 type SimplifiedESIRequestEntry = ReturnType<typeof ess.ere.lookUpRequestByOperationId>;
 const lookupHealthStatus = (
     healths: ESIHealthStatus[],
-    re: SimplifiedESIRequestEntry,
-    opid: string
+    opid: string,
+    re?: SimplifiedESIRequestEntry,
 ) => {
-    const endpoint = re.context.endpoint;
-    const method = opid.substring(0, opid.indexOf("_"));
-    for (let index = 0, end = healths.length; index < end;) {
-        const health = healths[index++];
-        if (health.route === endpoint && health.method === method) {
-            return health;
+    if (re) {
+        const method   = opid.substring(0, opid.indexOf("_"));
+        const endpoint = re.context.endpoint;
+        for (let i = 0, end = healths.length; i < end;) {
+            const health = healths[i++];
+            if (health.route === endpoint && health.method === method) {
+                return health;
+            }
         }
     }
     return void 0;
@@ -52,13 +54,11 @@ const bindESIHealthStatus = async () => {
         }
         const opid = opnode.dataset.opid!;
         const re = lubopid(opid, false);
-        if (re) {
-            const healthState = lookupHealthStatus(
-                esiHealths, re, opid
-            );
-            const triState = $query(`span.${TRI_STATE}`, opnode);
-            raf(shiftClassName.bind(triState, healthState?.status || "dead"));
-        }
+        const healthState = lookupHealthStatus(
+            esiHealths, opid, re
+        );
+        const triState = $query(`span.${TRI_STATE}`, opnode);
+        raf(shiftClassName.bind(triState, healthState?.status || "dead"));
     }
 };
 const ScopeElement = R.memo(
@@ -167,8 +167,7 @@ on the [Managed Characters] page and re-add this character.
             >
                 <Card className="mui-custom-card">
                     <BorderedCardHeader title="Data Refresh" fontSize="1.4rem"
-                        subheader={<>ESI health status expiration: <span className={HEALTH_EXPIRES}></span></>}
-                        static={true}
+                        subheader={<>ESI health status expiration: <span className={HEALTH_EXPIRES}></span></>} static
                     />
                     <CardContent style={cardStyle}>
                         <table style={{ width: "100%" }}>

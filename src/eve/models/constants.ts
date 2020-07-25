@@ -46,11 +46,16 @@ export const resolveTypeImageURL = (typeId: number | string, size: number = 32) 
         return `https://images.evetech.net/types/${typeId}/${groupName.includes("Blueprint")? "bpc": "icon"}?size=${size}`;
     }
 };
+export const resolveTypeImageURL2 = (typeId: number | string, isbpc: boolean) => {
+    let skinNumber: number = SkinMap[typeId as TSkinMapKey];
+    return skinNumber? `./images/skin-icons/${skinNumber}.png`: `https://images.evetech.net/types/${typeId}/${isbpc? "bpc": "icon"}?size=32`;
+};
+const UNKNOWN_NAME = "- Unknown -";
 const lcogn = (typeId: number, isCategory = false) => {
     const { typeIDs, groupIDs, categoryIDs } = EVEApp.EVETypeIdMap;
     const gid = typeIDs[typeId];
     if (gid === void 0) {
-        return "- Unknown -";
+        return UNKNOWN_NAME;
     }
     if (isCategory) {
         return categoryIDs[
@@ -62,7 +67,10 @@ const lcogn = (typeId: number, isCategory = false) => {
 };
 export const lookupCategoryOrGroupName = lcogn;
 export const getSkillGroupImagePath = (skillId: number) => {
-    const groupName = lcogn(skillId);
+    let groupName = lcogn(skillId);
+    if (groupName === UNKNOWN_NAME) {
+        groupName = "unknown";
+    }
     return `./images/skill-groups/${groupName.toLowerCase().replace(" ", "-")}.png`;
 };
 export const SkillPointTable = [
